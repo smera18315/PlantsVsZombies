@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.MainPageController">
+   <children>
+      <ImageView fitHeight="815.0" fitWidth="1293.0" layoutX="-7.0" layoutY="-8.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../Images/5da9c93b6dd6e7cd0da8d61fc932dd41.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="114.0" fitWidth="243.0" layoutX="258.0" layoutY="238.0" onMouseEntered="#hover" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Start%20Game.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="119.0" fitWidth="271.0" layoutX="501.0" layoutY="377.0" onMouseMoved="#hover" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Load%20Game.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="122.0" fitWidth="272.0" layoutX="765.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Exit%20Game.png" />
+         </image>
+      </ImageView>
+   </children>
+</Pane>
