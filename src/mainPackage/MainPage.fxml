@@ -21,7 +21,7 @@
             <Image url="@../../Images/LoadGame.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="119.0" fitWidth="254.0" layoutX="741.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="119.0" fitWidth="254.0" layoutX="741.0" layoutY="490.0" onMouseEntered="#mouseEnterChooseLevel" onMouseExited="#mouseExitChooseLevel" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/ChooseLevel.png" />
          </image>
