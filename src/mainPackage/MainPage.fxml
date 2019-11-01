@@ -11,19 +11,24 @@
             <Image url="@../../Images/5da9c93b6dd6e7cd0da8d61fc932dd41.jpg" />
          </image>
       </ImageView>
-      <ImageView fitHeight="114.0" fitWidth="243.0" layoutX="258.0" layoutY="238.0" onMouseEntered="#hover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="114.0" fitWidth="243.0" layoutX="258.0" layoutY="238.0" onMouseEntered="#mouseEnterStartGame" onMouseExited="#mouseExitStartGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/Start%20Game.png" />
+            <Image url="@../../Images/StartGame.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="119.0" fitWidth="271.0" layoutX="501.0" layoutY="377.0" onMouseMoved="#hover" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="119.0" fitWidth="271.0" layoutX="493.0" layoutY="371.0" onMouseEntered="#mouseEnterLoadGame" onMouseExited="#mouseExitLoadGame" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/Load%20Game.png" />
+            <Image url="@../../Images/LoadGame.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="122.0" fitWidth="272.0" layoutX="765.0" layoutY="502.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="119.0" fitWidth="254.0" layoutX="741.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/Exit%20Game.png" />
+            <Image url="@../../Images/ChooseLevel.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="122.0" fitWidth="272.0" layoutX="967.0" layoutY="631.0" onMouseEntered="#mouseEnterExitGame" onMouseExited="#mouseExitExitGame" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/ExitGame.png" />
          </image>
       </ImageView>
    </children>
