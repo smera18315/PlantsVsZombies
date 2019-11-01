@@ -6,7 +6,7 @@
 
 <Pane minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.MainPageController">
    <children>
-      <ImageView fitHeight="815.0" fitWidth="1293.0" layoutX="-7.0" layoutY="-8.0" pickOnBounds="true">
+      <ImageView fitHeight="730.0" fitWidth="1293.0" layoutX="-7.0" layoutY="-8.0" pickOnBounds="true">
          <image>
             <Image url="@../../Images/5da9c93b6dd6e7cd0da8d61fc932dd41.jpg" />
          </image>
@@ -16,17 +16,17 @@
             <Image url="@../../Images/StartGame.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="119.0" fitWidth="271.0" layoutX="493.0" layoutY="371.0" onMouseEntered="#mouseEnterLoadGame" onMouseExited="#mouseExitLoadGame" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="119.0" fitWidth="271.0" layoutX="475.0" layoutY="360.0" onMouseEntered="#mouseEnterLoadGame" onMouseExited="#mouseExitLoadGame" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/LoadGame.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="119.0" fitWidth="254.0" layoutX="741.0" layoutY="490.0" onMouseEntered="#mouseEnterChooseLevel" onMouseExited="#mouseExitChooseLevel" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="119.0" fitWidth="254.0" layoutX="697.0" layoutY="472.0" onMouseEntered="#mouseEnterChooseLevel" onMouseExited="#mouseExitChooseLevel" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/ChooseLevel.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="122.0" fitWidth="272.0" layoutX="967.0" layoutY="631.0" onMouseEntered="#mouseEnterExitGame" onMouseExited="#mouseExitExitGame" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="122.0" fitWidth="272.0" layoutX="967.0" layoutY="585.0" onMouseEntered="#mouseEnterExitGame" onMouseExited="#mouseExitExitGame" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/ExitGame.png" />
          </image>
