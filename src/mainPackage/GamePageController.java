@@ -17,7 +17,7 @@ public class GamePageController {
 	@FXML
     public void lawnMower(MouseEvent e){
         ImageView m = (ImageView) e.getSource();
-        
+
         TranslateTransition translate = new TranslateTransition();  
           
         translate.setByX(1500);  
@@ -68,25 +68,16 @@ public class GamePageController {
 	
 	public void zombieMove(MouseEvent e){
 		
-		  ImageView m = (ImageView) e.getSource();
-	        TranslateTransition translateUp = new TranslateTransition(Duration.millis(700), m);  
-	       //translateUp.setFromX(0);
-	        //translateUp.setFromY(0);
-	        translateUp.setByX(-30);
-	       //translateUp.setByY(-10);
-
-	        TranslateTransition translateDown = new TranslateTransition(Duration.millis(700), m);  
-	       // ttDown.setFromX(0);
-	        //ttDown.setFromY(0);
-	        //translateDown.setByX(-30);
-	        translateDown.setByY(10);
-	
-	       
-	       ParallelTransition seqT = new ParallelTransition (m,translateUp, translateDown);  
-           
-	       seqT.play();  
-        
-		      
+		 ImageView m = (ImageView) e.getSource();
+	        
+	        TranslateTransition translate = new TranslateTransition();  
+	        System.out.println("hi");
+	        translate.setByX(-675);  
+	 
+	        translate.setDuration(Duration.millis(50000));  
+	        translate.setNode(m);  
+	  
+	        translate.play(); 		      
 		
 	}
 	

@@ -110,9 +110,9 @@
             <Image url="@../../Images/PeaShooter.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="657.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="145.0" fitWidth="114.0" layoutX="1056.0" layoutY="122.0" onMouseClicked="#zombieMove" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/TheAdvancing_zombie.gif" />
+            <Image url="@../../Images/ZombieWalking.gif" />
          </image>
       </ImageView>
    </children>
