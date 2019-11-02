@@ -16,7 +16,7 @@
             <Image url="@../../Images/SelectMode.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="345.0" fitWidth="394.0" layoutX="151.0" layoutY="247.0" onMouseEntered="#mouseEnterExistingPlayer" onMouseExited="#mouseExitExistingPlayer" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="345.0" fitWidth="394.0" layoutX="151.0" layoutY="247.0" onMouseClicked="#existingPlayer" onMouseEntered="#mouseEnterExistingPlayer" onMouseExited="#mouseExitExistingPlayer" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/ExistingPlayerDark.png" />
          </image>
