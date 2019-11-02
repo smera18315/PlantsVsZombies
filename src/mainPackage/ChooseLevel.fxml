@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.ChooseLevel">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.ChooseLevelController">
    <children>
-      <ImageView fitHeight="800.0" fitWidth="1280.0" onMouseEntered="#mouseEnterLev1" onMouseExited="#mouseExitLev1" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="800.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/chooseLevelBg.jpg" />
          </image>
