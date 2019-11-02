@@ -1,60 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.GamePageController">
    <children>
       <ImageView fitHeight="722.0" fitWidth="1285.0" layoutX="-1.0" layoutY="76.0" pickOnBounds="true">
          <image>
             <Image url="@../../Images/Background.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-8.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="-8.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/SquareButton.png" />
+            <Image url="@../../Images/SunButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="135.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="150.0" layoutX="135.0" layoutY="-12.0" onMouseClicked="#press" onMouseDragged="#handle" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/SquareButton.png" />
+            <Image url="@../../Images/SunflowerPlantCard.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="SE_RESIZE" />
+         </cursor>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="278.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/PlantButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="278.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="421.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/SquareButton.png" />
+            <Image url="@../../Images/PlantButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="421.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/SquareButton.png" />
+            <Image url="@../../Images/PlantButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="564.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="707.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/SquareButton.png" />
+            <Image url="@../../Images/PlantButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="707.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="850.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/SquareButton.png" />
+            <Image url="@../../Images/PlantButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="850.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="993.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/SquareButton.png" />
+            <Image url="@../../Images/PlantButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="993.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1136.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/SquareButton.png" />
+            <Image url="@../../Images/MenuButton.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1136.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="99.0" fitWidth="143.0" layoutX="258.0" layoutY="194.0" onMouseClicked="#lawnMower" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../Images/SquareButton.png" />
+            <Image url="@../../Images/Lawnmower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="99.0" fitWidth="143.0" layoutX="257.0" layoutY="273.0" onMouseClicked="#lawnMower" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Lawnmower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="99.0" fitWidth="143.0" layoutX="258.0" layoutY="360.0" onMouseClicked="#lawnMower" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Lawnmower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="99.0" fitWidth="143.0" layoutX="257.0" layoutY="452.0" onMouseClicked="#lawnMower" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Lawnmower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="99.0" fitWidth="143.0" layoutX="256.0" layoutY="546.0" onMouseClicked="#lawnMower" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Lawnmower.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="89.0" fitWidth="86.0" layoutX="24.0" layoutY="-5.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Sun.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="304.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/PeaShooter.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="448.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/Mine.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="1403.0" layoutY="138.0" onMouseClicked="#zombieMove" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/airZombie.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="96.0" fitWidth="85.0" layoutX="390.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/PeaShooter.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="657.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/TheAdvancing_zombie.gif" />
          </image>
       </ImageView>
    </children>
