@@ -74,6 +74,8 @@ public class GamePageController {
 	     ClipboardContent content = new ClipboardContent();
 	     content.putString(cardDrag.getImage().getUrl());
 	     db.setContent(content);
+			System.out.println(db.getString());
+
 	     e.consume();
 	     
 	     FadeTransition cardFade = new FadeTransition(Duration.millis(10000), cardDrag);
@@ -103,9 +105,24 @@ public class GamePageController {
 	    if (db.hasString()) {
 	    	if(cell.getImage()==null)
 	    	{
-	    		cell.setImage(new Image(db.getString()));
+    			System.out.println("hi");
+    			System.out.println(db.getString());
+
+
+	    		
+	    		
+	    		
+		    		cell.setImage(new Image(db.getString()));
+
+	    		
 		        flag = true;
 	    	}
+	    	
+	    	else if(db.getString().contains("Shovel"))
+    		{
+    			System.out.println("shovel");
+    			cell.setImage(null);
+    		}
 	    
 	    }
 	    e.setDropCompleted(flag);
