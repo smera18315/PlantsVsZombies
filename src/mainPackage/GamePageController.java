@@ -37,7 +37,7 @@ public class GamePageController {
     }
 
 	@FXML
-	public void fade(MouseEvent e){
+	public void fade(MouseEvent e){		//Fade Animation
 		
 		ImageView card = (ImageView) e.getSource();
 		FadeTransition fade = new FadeTransition(Duration.millis(3000), card);
@@ -47,7 +47,7 @@ public class GamePageController {
 		fade.play();
 	}
 	
-	public void zombieMove(MouseEvent e){
+	public void zombieMove(MouseEvent e){	//Moving zombie function
 		
 		 ImageView zombie = (ImageView) e.getSource();
 	        
@@ -67,7 +67,7 @@ public class GamePageController {
 		
 	}
 	
-	 public void dragDetected(MouseEvent e) throws InterruptedException {
+	 public void dragDetected(MouseEvent e) throws InterruptedException {	//Dragging plant cards
 		 ImageView cardDrag = (ImageView) e.getSource();
 
 	     Dragboard db = cardDrag.startDragAndDrop(TransferMode.ANY);
@@ -107,13 +107,7 @@ public class GamePageController {
 	    	{
     			System.out.println("hi");
     			System.out.println(db.getString());
-
-
-	    		
-	    		
-	    		
-		    		cell.setImage(new Image(db.getString()));
-
+    			cell.setImage(new Image(db.getString()));
 	    		
 		        flag = true;
 	    	}
@@ -129,19 +123,8 @@ public class GamePageController {
 	    e.consume();
 	}
 	 
-	 public void dragDetectedShovel(MouseEvent e) throws InterruptedException {
-		 ImageView shovel = (ImageView) e.getSource();
-
-	     Dragboard db = shovel.startDragAndDrop(TransferMode.ANY);
-	     ClipboardContent content = new ClipboardContent();
-	     content.putImage(null);
-	     db.setContent(content);
-	     e.consume();
-	     
-	    }
-	 
 	 @FXML
-	 public void Menu(MouseEvent e) throws IOException {
+	 public void Menu(MouseEvent e) throws IOException {	//Menu Button
 		Parent root= FXMLLoader.load(getClass().getResource("InGameMenu.fxml"));
 		Stage stage = (Stage) ((Node)e.getTarget()).getScene().getWindow();
 		stage.setScene(new Scene(root));
@@ -149,7 +132,7 @@ public class GamePageController {
 	 }
 	 
 	 @FXML
-	 public void Clock(MouseEvent e){
+	 public void Clock(MouseEvent e){		//Timer Animation
 		 ImageView m = (ImageView) e.getSource();
 
 		 RotateTransition rotateClock = new RotateTransition(); 
