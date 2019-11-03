@@ -6,9 +6,9 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.ChooseLevelController">
    <children>
-      <ImageView fitHeight="800.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="800.0" fitWidth="1279.0" opacity="0.6" pickOnBounds="true">
          <image>
-            <Image url="@../../Images/chooseLevelBg.jpg" />
+            <Image url="@../../Images/Background%2002/2048x1536.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="94.0" fitWidth="202.0" layoutX="332.0" layoutY="219.0" onMouseClicked="#levelOne" onMouseEntered="#mouseExitStartLev1" onMouseExited="#mouseEnterLev1" pickOnBounds="true" preserveRatio="true">
@@ -49,6 +49,11 @@
       <ImageView fitHeight="94.0" fitWidth="202.0" layoutX="773.0" layoutY="645.0" onMouseEntered="#mouseExitStartLev8" onMouseExited="#mouseEnterLev8" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/Level8.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="132.0" fitWidth="394.0" layoutX="443.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/ChooseLevelWooden.png" />
          </image>
       </ImageView>
    </children>
