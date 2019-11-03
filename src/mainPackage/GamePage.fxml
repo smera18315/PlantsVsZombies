@@ -187,5 +187,15 @@
          </image>
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="89.0" prefHeight="20.0" prefWidth="79.0" text="0" textAlignment="JUSTIFY" />
+      <ImageView fitHeight="263.0" fitWidth="285.0" layoutX="1058.0" layoutY="228.0" onMouseMoved="#zombieMove" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/GlaringBewitchedIndianabat-max-1mb.gif" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="243.0" fitWidth="148.0" layoutX="1018.0" layoutY="384.0" onMouseMoved="#zombieMove" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/FlyingZombie.gif" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
