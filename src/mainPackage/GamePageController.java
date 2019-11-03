@@ -1,19 +1,27 @@
 package mainPackage;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.transform.Rotate;
 import javafx.scene.transform.Shear;
 import javafx.scene.transform.Translate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
@@ -99,36 +107,63 @@ public class GamePageController {
 		    m.setMouseTransparent(true);
 	    }
 	 
-	 public void dragOver(DragEvent event) {
-	        /* data is dragged over the target */
-	        /* accept it only if it is not dragged from the same node 
-	         * and if it has a string data */
-	        if (event.getDragboard().hasString()) {
-	            /* allow for both copying and moving, whatever user chooses */
-	            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+	 public void dragOver(DragEvent e) {
+	        if (e.getDragboard().hasString()) {
+	            e.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 	        }
 	        
-	        event.consume();
+	        e.consume();
 	    }
 	 
-	 public void dragDropped(DragEvent event) {
-		ImageView target = (ImageView) event.getTarget();
-	        /* data dropped */
-	        /* if there is a string data on dragboard, read it and use it */
-	        Dragboard db = event.getDragboard();
-	        boolean success = false;
-	        if (db.hasString()) {
-	        //String name = db.getImage().getUrl();
-	        //System.out.println(db.getString());
-	           target.setImage(new Image(db.getString()));
-	           success = true;
-	        }
-	        /* let the source know whether the string was successfully 
-	         * transferred and used */
-	        event.setDropCompleted(success);
-	        
-	        event.consume();
-	     }
+	 public void dragDropped(DragEvent e) {
+		ImageView cell = (ImageView) e.getTarget();
+	    Dragboard db = e.getDragboard();
+	    boolean success = false;
+	    if (db.hasString()) {
+	    	if(cell.getImage()==null)
+	    	{
+	    		cell.setImage(new Image(db.getString()));
+		        success = true;
+	    	}
+	    
+	    }
+
+	    e.setDropCompleted(success);
+	    e.consume();
+	}
+	 
+	 public void dragDetectedShovel(MouseEvent e) throws InterruptedException {
+		 ImageView m = (ImageView) e.getSource();
+
+	     Dragboard db = m.startDragAndDrop(TransferMode.ANY);
+	     ClipboardContent content = new ClipboardContent();
+	     content.putImage(null);
+	     db.setContent(content);
+	     e.consume();
+	     
+	    }
+	 
+	 @FXML
+	 public void Menu(MouseEvent e) throws IOException {
+		Parent root= FXMLLoader.load(getClass().getResource("InGameMenu.fxml"));
+		Stage stage = (Stage) ((Node)e.getTarget()).getScene().getWindow();
+		stage.setScene(new Scene(root));
+
+	 }
+	 
+	 @FXML
+	 public void Clock(MouseEvent e){
+		 ImageView m = (ImageView) e.getSource();
+
+		 RotateTransition rotate = new RotateTransition();  
+		 rotate.setByAngle(360);   
+	     rotate.setAxis(Rotate.Z_AXIS);  
+	     rotate.setDuration(Duration.millis(60000));  
+	     rotate.setNode(m);  
+	     rotate.play();  
+	          
+
+	 }
 	
 
 }
