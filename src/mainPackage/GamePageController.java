@@ -1,14 +1,25 @@
 package mainPackage;
 
+import java.io.IOException;
 import javafx.animation.*;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.transform.Shear;
-import javafx.scene.transform.Translate;
+import javafx.scene.input.TransferMode;
+import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+
 
 public class GamePageController {
 	
@@ -16,72 +27,122 @@ public class GamePageController {
 	
 	@FXML
     public void lawnMower(MouseEvent e){
-        ImageView m = (ImageView) e.getSource();
-
+        ImageView lawnMower = (ImageView) e.getSource();
         TranslateTransition translate = new TranslateTransition();  
-          
+        translate.setNode(lawnMower);  
         translate.setByX(1500);  
- 
-        translate.setDuration(Duration.millis(1000));  
-        translate.setNode(m);  
-  
+        translate.setDuration(Duration.millis(2000));  
         translate.play();  
 
     }
-	
-	public void press(MouseEvent t){
-		
-	
-		            orgSceneX = t.getSceneX();
-		            orgSceneY = t.getSceneY();
-		            orgTranslateX = ((ImageView)(t.getSource())).getTranslateX();
-		            orgTranslateY = ((ImageView)(t.getSource())).getTranslateY();
-		        }
-	
-	 public void handle(MouseEvent t) {
-         double offsetX = t.getSceneX() - orgSceneX -180;
-         double offsetY = t.getSceneY() - orgSceneY;
-         double newTranslateX = orgTranslateX + offsetX;
-         double newTranslateY = orgTranslateY + offsetY;
-          
-         ((ImageView)(t.getSource())).setTranslateX(newTranslateX);
-         ((ImageView)(t.getSource())).setTranslateY(newTranslateY);
-     }
-		  
-		    
-		   
 
-
+	@FXML
 	public void fade(MouseEvent e){
 		
-		  ImageView m = (ImageView) e.getSource();
-
-		  FadeTransition ft = new FadeTransition(Duration.millis(3000), m);
+		ImageView card = (ImageView) e.getSource();
+		FadeTransition fade = new FadeTransition(Duration.millis(3000), card);
 		  
-	      ft.setFromValue(0);
-	      ft.setToValue(1);
-	      //ft.setCycleCount(4);
-	      //ft.setAutoReverse(true);
-	  
-	      ft.play();
+		fade.setFromValue(0);
+		fade.setToValue(1);
+		fade.play();
 	}
 	
 	public void zombieMove(MouseEvent e){
 		
-		 ImageView m = (ImageView) e.getSource();
+		 ImageView zombie = (ImageView) e.getSource();
 	        
-	        TranslateTransition translate = new TranslateTransition();  
-	        System.out.println("hi");
-	        translate.setByX(-675);  
-	 
-	        translate.setDuration(Duration.millis(50000));  
-	        translate.setNode(m);  
-	  
-	        translate.play(); 		      
+	     TranslateTransition zombieMove = new TranslateTransition();  
+	     //System.out.println("hi");
+	     zombieMove.setNode(zombie);  
+	     zombieMove.setByX(-675);  
+	     zombieMove.setDuration(Duration.millis(30000));  
+	     zombieMove.play(); 
+	        
+	     zombieMove.setOnFinished(new EventHandler<ActionEvent>() {
+	    	@Override
+			public void handle(ActionEvent event) {
+	    		zombie.setMouseTransparent(true);
+			}
+		});	
 		
 	}
 	
-	
+	 public void dragDetected(MouseEvent e) throws InterruptedException {
+		 ImageView cardDrag = (ImageView) e.getSource();
+
+	     Dragboard db = cardDrag.startDragAndDrop(TransferMode.ANY);
+	     ClipboardContent content = new ClipboardContent();
+	     content.putString(cardDrag.getImage().getUrl());
+	     db.setContent(content);
+	     e.consume();
+	     
+	     FadeTransition cardFade = new FadeTransition(Duration.millis(10000), cardDrag);
+	     cardFade.setOnFinished(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent event) {
+					cardDrag.setMouseTransparent(false);
+				}
+			});		     
+	     cardFade.setFromValue(-10);
+	     cardFade.setToValue(10);
+	     cardFade.play();
+		 cardDrag.setMouseTransparent(true);
+	    }
+	 
+	 public void dragOver(DragEvent e) {
+	        if (e.getDragboard().hasString()) {
+	            e.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+	        } 
+	        e.consume();
+	    }
+	 
+	 public void dragDropped(DragEvent e) {
+		ImageView cell = (ImageView) e.getTarget();
+	    Dragboard db = e.getDragboard();
+	    boolean flag = false;
+	    if (db.hasString()) {
+	    	if(cell.getImage()==null)
+	    	{
+	    		cell.setImage(new Image(db.getString()));
+		        flag = true;
+	    	}
+	    
+	    }
+	    e.setDropCompleted(flag);
+	    e.consume();
+	}
+	 
+	 public void dragDetectedShovel(MouseEvent e) throws InterruptedException {
+		 ImageView shovel = (ImageView) e.getSource();
+
+	     Dragboard db = shovel.startDragAndDrop(TransferMode.ANY);
+	     ClipboardContent content = new ClipboardContent();
+	     content.putImage(null);
+	     db.setContent(content);
+	     e.consume();
+	     
+	    }
+	 
+	 @FXML
+	 public void Menu(MouseEvent e) throws IOException {
+		Parent root= FXMLLoader.load(getClass().getResource("InGameMenu.fxml"));
+		Stage stage = (Stage) ((Node)e.getTarget()).getScene().getWindow();
+		stage.setScene(new Scene(root));
+
+	 }
+	 
+	 @FXML
+	 public void Clock(MouseEvent e){
+		 ImageView m = (ImageView) e.getSource();
+
+		 RotateTransition rotateClock = new RotateTransition(); 
+		 rotateClock.setNode(m);  
+		 rotateClock.setByAngle(360);   
+		 rotateClock.setAxis(Rotate.Z_AXIS);  
+		 rotateClock.setDuration(Duration.millis(60000));  
+		 rotateClock.play();  
+
+	 }
 	
 
 }
