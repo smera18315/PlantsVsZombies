@@ -76,5 +76,11 @@ public class MainPageController {
 		stage.setScene(new Scene(root));
 
     }
+	@FXML
+    public void chooseLevel(MouseEvent e) throws IOException {
+		Parent root= FXMLLoader.load(getClass().getResource("ChooseLevel.fxml"));
+		Stage stage = (Stage) ((Node)e.getTarget()).getScene().getWindow();
+		stage.setScene(new Scene(root));
+	}
 }
 
