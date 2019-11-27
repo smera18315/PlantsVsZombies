@@ -1,6 +1,8 @@
 package mainPackage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,6 +19,7 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -26,7 +29,20 @@ import javafx.util.Pair;
 public class GamePageController {
 	
 	LevelGame thisLevel = new LevelGame();
-	
+	ArrayList<ArrayList<Plant>> yardGrid = new ArrayList<ArrayList<Plant>>();
+	ArrayList<Plant> constructorList = new ArrayList<Plant>(5);
+	{
+		for(int i=0; i<5;++i)
+		{
+			constructorList.add(null);
+		}
+		
+		for(int i=0; i<9;++i)
+		{
+			ArrayList<Plant> list = new ArrayList<Plant>(constructorList);
+			yardGrid.add(list);
+		}
+	}
 	double  orgSceneX ,   orgSceneY, orgTranslateX, orgTranslateY;
 	
 	@FXML
@@ -126,16 +142,42 @@ public class GamePageController {
 	    	if(cell.getImage()==null)
 	    	{
     			System.out.println(db.getString());
+    			GridPane gp = (GridPane)cell.getParent();
+    			int x = gp.getRowIndex(cell);
+		        System.out.println(x);
+		    	int y = gp.getColumnIndex(cell);
+		        System.out.println(y);
+
     			cell.setImage(new Image(db.getString()));
 		        flag = true;
 		        System.out.println(cell.getLayoutX());
+		        //System.out.println("hi");
+
 		        Pair<Integer, Integer> plantCoordinate = new Pair<Integer, Integer>((int)cell.getLayoutX(), (int)cell.getLayoutY());
+		        //System.out.println("hi22");
+
 		        Plant newPlant = parseURL(db.getString(), plantCoordinate);	//parseURL is a function that takes in the url, strips and gets the name from it and returns a plant type variable
-//		        arrYard.get(plantCoordinate.getKey()).get(plantCoordinate.getValue()).set(newPlant);
-//		        thisLevel.addPlants(newPlant);
-//		        cell.setUserData(newPlant);
+		        System.out.println(yardGrid);
 		        
-		        System.out.println(cell.getUserData());
+		        
+		        yardGrid.get(x).set(y, newPlant);
+		        System.out.println(yardGrid);
+
+		        //System.out.println("hi");
+
+		        thisLevel.addPlants(newPlant);
+		        //System.out.println("hi5");
+
+		        cell.setUserData(newPlant);
+		        //System.out.println("hi");
+
+		      //  System.out.println(cell.getUserData());
+		       // System.out.println("h2");
+
+//		        for(ArrayList<Plant> i: yardGrid)
+//		        {
+//		        	System.out.println(i);
+//		        }
 	    	}
 	    	
 	    	else if(db.getString().contains("Shovel"))
