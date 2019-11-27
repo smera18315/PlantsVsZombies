@@ -4,10 +4,33 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.GamePageController">
    <children>
+      <GridPane layoutX="384.0" layoutY="208.0" prefHeight="454.0" prefWidth="695.0">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="144.19998779296876" minHeight="10.0" prefHeight="85.39998779296874" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="144.19998779296876" minHeight="0.0" prefHeight="93.40001220703127" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="144.19998779296876" minHeight="10.0" prefHeight="91.60000000000002" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="162.3999755859375" minHeight="10.0" prefHeight="90.80000000000001" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="186.00002441406247" minHeight="10.0" prefHeight="87.60000000000002" vgrow="SOMETIMES" />
+        </rowConstraints>
+      </GridPane>
       <ImageView fitHeight="722.0" fitWidth="1285.0" layoutX="-1.0" layoutY="76.0" pickOnBounds="true">
          <image>
             <Image url="@../../Images/Background.png" />
@@ -96,13 +119,8 @@
             <Image url="@../../Images/airZombie.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="148.0" fitWidth="97.0" layoutX="1079.0" layoutY="129.0" onMouseMoved="#zombieMove" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/ZombieWalking.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="392.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="86.0" fitWidth="85.0" layoutX="157.0" layoutY="8.0" onDragDetected="#dragDetected" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="390.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="86.0" fitWidth="85.0" layoutX="157.0" layoutY="8.0" onDragDetected="#dragDetected" onMouseClicked="#bindSunFlower" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/SunflowerGif.gif" />
          </image>
@@ -110,47 +128,47 @@
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="390.0" layoutY="301.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="390.0" layoutY="391.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="390.0" layoutY="484.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="392.0" layoutY="570.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="462.0" layoutY="210.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="390.0" layoutY="570.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="465.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="467.0" layoutY="303.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="467.0" layoutY="393.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="467.0" layoutY="486.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="469.0" layoutY="572.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="538.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="540.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="542.0" layoutY="301.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="542.0" layoutY="391.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="542.0" layoutY="484.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="544.0" layoutY="570.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="623.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="615.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="621.0" layoutY="301.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="621.0" layoutY="391.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="621.0" layoutY="484.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="623.0" layoutY="570.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="693.0" layoutY="210.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="690.0" layoutY="210.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="698.0" layoutY="303.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="698.0" layoutY="393.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="698.0" layoutY="486.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="700.0" layoutY="572.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="769.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="765.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="773.0" layoutY="301.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="773.0" layoutY="391.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="773.0" layoutY="484.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="775.0" layoutY="570.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="846.0" layoutY="206.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="840.0" layoutY="206.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="844.0" layoutY="299.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="844.0" layoutY="389.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="844.0" layoutY="482.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="846.0" layoutY="568.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="916.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="915.0" layoutY="208.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="921.0" layoutY="301.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="921.0" layoutY="391.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="921.0" layoutY="484.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="923.0" layoutY="570.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="992.0" layoutY="206.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="996.0" layoutY="299.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="996.0" layoutY="389.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="996.0" layoutY="482.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="998.0" layoutY="568.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="990.0" layoutY="206.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="990.0" layoutY="299.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="990.0" layoutY="389.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="86.0" fitWidth="75.0" layoutX="990.0" layoutY="482.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="990.0" layoutY="568.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="86.0" fitWidth="85.0" layoutX="299.0" layoutY="13.0" onDragDetected="#dragDetected" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/PeashooterGif.gif" />
@@ -177,16 +195,6 @@
          </image>
       </ImageView>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="89.0" prefHeight="20.0" prefWidth="79.0" text="0" textAlignment="JUSTIFY" />
-      <ImageView fitHeight="263.0" fitWidth="285.0" layoutX="1058.0" layoutY="228.0" onMouseMoved="#zombieMove" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/GlaringBewitchedIndianabat-max-1mb.gif" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="243.0" fitWidth="148.0" layoutX="1018.0" layoutY="384.0" onMouseMoved="#zombieMove" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Images/FlyingZombie.gif" />
-         </image>
-      </ImageView>
       <ImageView fitHeight="99.0" fitWidth="75.0" layoutX="1031.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/Stopwatch.png" />
@@ -197,5 +205,6 @@
             <Image url="@../../Images/ClockHand.png" />
          </image>
       </ImageView>
+      <ImageView fitHeight="93.0" fitWidth="75.0" layoutX="384.0" layoutY="206.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" />
    </children>
 </Pane>

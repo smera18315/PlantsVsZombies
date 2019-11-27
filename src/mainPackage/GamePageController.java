@@ -20,6 +20,7 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import javafx.util.Pair;
 
 
 public class GamePageController {
@@ -100,7 +101,23 @@ public class GamePageController {
 	        } 
 	        e.consume();
 	    }
-	 
+	 public static Plant parseURL(String s, Pair<Integer,Integer> a){	//fix this so that it runs on other systems
+	        if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/PeashooterGif.gif")){
+	            return new PeaShooter(a);
+	        }
+	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/SunflowerGif.gif")){
+	            return new SunFlower(a);
+	        }
+	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/WalnutGif.gif")){
+	            return new Walnut(a);
+	        }
+	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/MineGif.gif")){
+	            return new CherryBomb(a);
+	        }
+	        else{
+	            return null;
+	        }
+	    }
 	 public void dragDropped(DragEvent e) {
 		ImageView cell = (ImageView) e.getTarget();
 	    Dragboard db = e.getDragboard();
@@ -108,20 +125,17 @@ public class GamePageController {
 	    if (db.hasString()) {
 	    	if(cell.getImage()==null)
 	    	{
-    			//System.out.println("hi");
-    			//System.out.println(db.getString());
+    			System.out.println(db.getString());
     			cell.setImage(new Image(db.getString()));
 		        flag = true;
-		        System.out.println(cell.getX());
 		        System.out.println(cell.getLayoutX());
-
-		        Bounds boundsInScreen = cell.localToScreen(cell.getBoundsInLocal());
-		        System.out.println(boundsInScreen.getMaxX());
-		        System.out.println(boundsInScreen.getMinX());
-
-		        //Plant newPlant = parseURL(db.getString());	//parseURL is a function that takes in the url, strips and gets the name from and it and returns a plant type variable
+		        Pair<Integer, Integer> plantCoordinate = new Pair<Integer, Integer>((int)cell.getLayoutX(), (int)cell.getLayoutY());
+		        Plant newPlant = parseURL(db.getString(), plantCoordinate);	//parseURL is a function that takes in the url, strips and gets the name from it and returns a plant type variable
+//		        arrYard.get(plantCoordinate.getKey()).get(plantCoordinate.getValue()).set(newPlant);
+//		        thisLevel.addPlants(newPlant);
+//		        cell.setUserData(newPlant);
 		        
-		        //thisLevel.addPlants(newPlant);
+		        System.out.println(cell.getUserData());
 	    	}
 	    	
 	    	else if(db.getString().contains("Shovel"))
@@ -155,6 +169,8 @@ public class GamePageController {
 		 rotateClock.play();  
 
 	 }
+	 
+	 
 	
 
 }
