@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Bounds;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,6 +23,8 @@ import javafx.util.Duration;
 
 
 public class GamePageController {
+	
+	LevelGame thisLevel = new LevelGame();
 	
 	double  orgSceneX ,   orgSceneY, orgTranslateX, orgTranslateY;
 	
@@ -74,7 +77,7 @@ public class GamePageController {
 	     ClipboardContent content = new ClipboardContent();
 	     content.putString(cardDrag.getImage().getUrl());
 	     db.setContent(content);
-			System.out.println(db.getString());
+		 //System.out.println(db.getString());
 
 	     e.consume();
 	     
@@ -105,16 +108,25 @@ public class GamePageController {
 	    if (db.hasString()) {
 	    	if(cell.getImage()==null)
 	    	{
-    			System.out.println("hi");
-    			System.out.println(db.getString());
+    			//System.out.println("hi");
+    			//System.out.println(db.getString());
     			cell.setImage(new Image(db.getString()));
-	    		
 		        flag = true;
+		        System.out.println(cell.getX());
+		        System.out.println(cell.getLayoutX());
+
+		        Bounds boundsInScreen = cell.localToScreen(cell.getBoundsInLocal());
+		        System.out.println(boundsInScreen.getMaxX());
+		        System.out.println(boundsInScreen.getMinX());
+
+		        //Plant newPlant = parseURL(db.getString());	//parseURL is a function that takes in the url, strips and gets the name from and it and returns a plant type variable
+		        
+		        //thisLevel.addPlants(newPlant);
 	    	}
 	    	
 	    	else if(db.getString().contains("Shovel"))
     		{
-    			System.out.println("shovel");
+    			//System.out.println("shovel");
     			cell.setImage(null);
     		}
 	    
