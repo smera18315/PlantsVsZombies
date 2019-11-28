@@ -11,6 +11,7 @@ public abstract class Plant extends Creature implements Serializable, Runnable, 
 	/**
 	 * 
 	 */
+	int x,y;
 	private static final long serialVersionUID = 942001018781760401L;
 	private String plantName, plantType;
 	private int plantID, plantHealth, plantWaitingTime, plantSunCost, plantAttack;
@@ -20,7 +21,7 @@ public abstract class Plant extends Creature implements Serializable, Runnable, 
 	
 	public Plant(String plantName, String plantType, int plantID, int plantHealth, int plantWaitingTime,
 			int plantSunCost, int plantAttack, boolean isPlantAlive, boolean isPlantLocked,
-			Pair<Integer, Integer> plantCoordinates) {
+			Pair<Integer, Integer> plantCoordinates, int x, int y) {
 		super(plantCoordinates.getKey(),plantCoordinates.getValue(),"Plant");
 		this.plantName = plantName;
 		this.plantType = plantType;
@@ -32,6 +33,8 @@ public abstract class Plant extends Creature implements Serializable, Runnable, 
 		this.isPlantAlive = isPlantAlive;
 		this.isPlantLocked = isPlantLocked;
 		this.plantCoordinates = plantCoordinates;
+		this.x=x;
+		this.y=y;
 	}
 
 	public abstract void attack() throws InterruptedException;
@@ -55,8 +58,8 @@ class Walnut extends Plant
 	 */
 	private static final long serialVersionUID = 8853268217182944234L;
 
-	public Walnut(Pair<Integer, Integer> plantCoordinates) {
-		super("Walnut", "Defense Plant", 3, 150, 25, 75, 0, true, false,plantCoordinates);
+	public Walnut(Pair<Integer, Integer> plantCoordinates, int x, int y) {
+		super("Walnut", "Defense Plant", 3, 150, 25, 75, 0, true, false,plantCoordinates,x,y);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -81,8 +84,8 @@ class CherryBomb extends Plant
 	 */
 	private static final long serialVersionUID = 7175064322338571913L;
 	private int blastRadius = 1;
-	public CherryBomb(Pair<Integer, Integer> plantCoordinates) {
-		super("CherryBomb", "Exploding Plant", 4, 0, 30, 150, 100, true, false, plantCoordinates);
+	public CherryBomb(Pair<Integer, Integer> plantCoordinates, int x, int y) {
+		super("CherryBomb", "Exploding Plant", 4, 0, 30, 150, 100, true, false, plantCoordinates,x,y);
 	}
 
 	@Override
@@ -117,8 +120,8 @@ class SunFlower extends Plant
 	 */
 	private static final long serialVersionUID = -801862830491365216L;
 	private int generationSpeed = 10;
-	public SunFlower(Pair<Integer, Integer> plantCoordinates) {
-		super("Sunflower", "Sun Producing Plant", 1, 100, 20, 50, 0, true, false, plantCoordinates);
+	public SunFlower(Pair<Integer, Integer> plantCoordinates, int x, int y) {
+		super("Sunflower", "Sun Producing Plant", 1, 100, 20, 50, 0, true, false, plantCoordinates,x,y);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -147,8 +150,8 @@ class PeaShooter extends Plant
 	private static final long serialVersionUID = -1760906844762856176L;
 	
 	ArrayList<Bullet> peaList;
-	public PeaShooter(Pair<Integer, Integer> plantCoordinates, Pane currentPane) {
-		super("Peashooter", "Pea Shooting Plant", 2, 100, 20, 100, 10, true, false,	plantCoordinates);
+	public PeaShooter(Pair<Integer, Integer> plantCoordinates, Pane currentPane, int x, int y) {
+		super("Peashooter", "Pea Shooting Plant", 2, 100, 20, 100, 10, true, false,	plantCoordinates,x,y);
 		peaList=new ArrayList<Bullet>(5);
 		for (int i=0;i<5;i++){
 			peaList.add(new Bullet(this, currentPane));

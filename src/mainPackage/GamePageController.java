@@ -148,18 +148,18 @@ public class GamePageController {
 	        } 
 	        e.consume();
 	    }
-	 public static Plant parseURL(String s, Pair<Integer,Integer> a, Pane currentPane){	//fix this so that it runs on other systems
+	 public static Plant parseURL(String s, Pair<Integer,Integer> a, Pane currentPane,int x, int y){	//fix this so that it runs on other systems
 	        if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/PeashooterGif.gif")){
-	            return new PeaShooter(a, currentPane);
+	            return new PeaShooter(a, currentPane,x,y);
 	        }
 	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/SunflowerGif.gif")){
-	            return new SunFlower(a);
+	            return new SunFlower(a,x,y);
 	        }
 	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/WalnutGif.gif")){
-	            return new Walnut(a);
+	            return new Walnut(a,x,y);
 	        }
 	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/MineGif.gif")){
-	            return new CherryBomb(a);
+	            return new CherryBomb(a,x,y);
 	        }
 	        else{
 	            return null;
@@ -174,11 +174,11 @@ public class GamePageController {
 	    	{
     			System.out.println(db.getString());
     			GridPane gp = (GridPane)cell.getParent();
-    			int x = gp.getRowIndex(cell);
+    			int  x = gp.getRowIndex(cell);
 		        System.out.println(x);
 		    	int y = gp.getColumnIndex(cell);
 		        System.out.println(y);
-
+		        
     			cell.setImage(new Image(db.getString()));
 		        flag = true;
 		        System.out.println(cell.getLayoutX());
@@ -187,7 +187,9 @@ public class GamePageController {
 		        Pair<Integer, Integer> plantCoordinate = new Pair<Integer, Integer>((int)cell.getLayoutX(), (int)cell.getLayoutY());
 		        //System.out.println("hi22");
 
-		        Plant newPlant = parseURL(db.getString(), plantCoordinate, (Pane)(cell.getParent()));	//parseURL is a function that takes in the url, strips and gets the name from it and returns a plant type variable
+		        Plant newPlant = parseURL(db.getString(), plantCoordinate, (Pane)(cell.getParent()),x,y);	//parseURL is a function that takes in the url, strips and gets the name from it and returns a plant type variable
+		        newPlant.x = x;
+		        newPlant.y = y;
 		        System.out.println(yardGrid);
 		        
 		        yardGrid.get(x).set(y, newPlant);
