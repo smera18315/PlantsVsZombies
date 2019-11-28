@@ -2,7 +2,9 @@ package mainPackage;
 
 import javafx.util.Pair;
 
-public abstract class Zombie {
+import java.io.Serializable;
+
+public abstract class Zombie implements Cloneable, Serializable, Runnable {
 
 	private String zombieName;
 	private boolean[] Type;
@@ -10,9 +12,9 @@ public abstract class Zombie {
 	private boolean isZombieAlive;
 	static int zombieCounter = 0;
 	Pair<Integer, Integer> zombieCoordinates;
-	
+
 	public Zombie(String zombieName, boolean[] type, int zombieID, int zombieHealth, int zombieWaitingTime,
-			boolean isZombieAlive, Pair<Integer, Integer> zombieCoordinates) {
+				  boolean isZombieAlive, Pair<Integer, Integer> zombieCoordinates) {
 		super();
 		this.zombieName = zombieName;
 		Type = type;
@@ -22,12 +24,21 @@ public abstract class Zombie {
 		this.isZombieAlive = isZombieAlive;
 		this.zombieCoordinates = zombieCoordinates;
 	}
-	
+
 	void eat() {
-		
+
 	}
-	
-	
+
+	@Override
+	public Zombie clone() {
+		try {
+			Zombie copy = (Zombie) super.clone();
+			return copy;
+		} catch (CloneNotSupportedException e) {
+			return null;
+		}
+
+	}
 }
 
 class FireZombie extends Zombie{
@@ -41,7 +52,11 @@ class FireZombie extends Zombie{
 	void shoot(){
 		
 	}
-	
+
+	@Override
+	public void run() {
+
+	}
 }
 
 class WaterZombie extends Zombie{
@@ -54,7 +69,11 @@ class WaterZombie extends Zombie{
 	void shoot() {
 		
 	}
-	
+
+	@Override
+	public void run() {
+
+	}
 }
 
 class ZombieBird extends Zombie{
@@ -67,19 +86,27 @@ class ZombieBird extends Zombie{
 	void airgust() {
 		
 	}
-	
+
+	@Override
+	public void run() {
+
+	}
 }
 
-class EarthZombie extends Zombie{
+class EarthZombie extends Zombie {
 
 	public EarthZombie(String zombieName, boolean[] type, int zombieID, int zombieHealth, int zombieWaitingTime,
-			boolean isZombieAlive, Pair<Integer, Integer> zombieCoordinates) {
+					   boolean isZombieAlive, Pair<Integer, Integer> zombieCoordinates) {
 		super(zombieName, type, zombieID, zombieHealth, zombieWaitingTime, isZombieAlive, zombieCoordinates);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	void earthquake() {
+
+	}
+
+	@Override
+	public void run() {
 		
 	}
-	
 }
