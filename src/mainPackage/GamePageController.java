@@ -32,12 +32,12 @@ public class GamePageController {
 	ArrayList<ArrayList<Plant>> yardGrid = new ArrayList<ArrayList<Plant>>();
 	ArrayList<Plant> constructorList = new ArrayList<Plant>(5);
 	{
-		for(int i=0; i<5;++i)
+		for(int i=0; i<=5;++i)
 		{
 			constructorList.add(null);
 		}
 		
-		for(int i=0; i<9;++i)
+		for(int i=0; i<=9;++i)
 		{
 			ArrayList<Plant> list = new ArrayList<Plant>(constructorList);
 			yardGrid.add(list);
