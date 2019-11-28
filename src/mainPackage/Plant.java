@@ -1,5 +1,8 @@
 package mainPackage;
 import java.io.Serializable;
+import java.sql.Time;
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import javafx.util.Pair;
 
@@ -30,7 +33,7 @@ public abstract class Plant extends Creature implements Serializable, Runnable, 
 		this.plantCoordinates = plantCoordinates;
 	}
 
-	public abstract void attack();
+	public abstract void attack() throws InterruptedException;
 	public void heal(int healPoints)
 	{
 		plantHealth = plantHealth + healPoints;
@@ -141,13 +144,21 @@ class PeaShooter extends Plant
 	 * 
 	 */
 	private static final long serialVersionUID = -1760906844762856176L;
-	private Bullet pea = new Bullet();
+	ArrayList<Bullet> peaList;
 	public PeaShooter(Pair<Integer, Integer> plantCoordinates) {
 		super("Peashooter", "Pea Shooting Plant", 2, 100, 20, 100, 10, true, false,	plantCoordinates);
+		peaList=new ArrayList<Bullet>(1000);
+		for (int i=0;i<1000;i++){
+			peaList.add(new Bullet(this));
+		}
 	}
 
 	@Override
-	public void attack() {
+	public void attack() throws InterruptedException {
+		for (int i=0;i<peaList.size();i++){
+			peaList.get(i).moveRight();
+			TimeUnit.MILLISECONDS.sleep(500);
+		}
 	}
 
 	@Override

@@ -1,7 +1,10 @@
 package mainPackage;
 
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import javafx.util.Pair;
 
 import java.io.Serializable;
@@ -34,6 +37,28 @@ public abstract class Zombie extends Creature implements Cloneable, Serializable
         this.isZombieAlive = isZombieAlive;
         this.zombieCoordinates = zombieCoordinates;
     }
+
+	void moveLeft(){
+		TranslateTransition animation = new TranslateTransition(
+				Duration.seconds(0.7), creatureImage
+		);
+		animation.setCycleCount(Animation.INDEFINITE);
+		animation.setFromX(creatureImage.getTranslateX());
+		animation.setToX(creatureImage.getTranslateX()-50);
+		animation.setAutoReverse(false);
+		animation.play();
+
+	}
+	void moveRight(){
+		TranslateTransition animation = new TranslateTransition(
+				Duration.seconds(0.7), creatureImage
+		);
+		animation.setCycleCount(Animation.INDEFINITE);
+		animation.setFromX(creatureImage.getTranslateX());
+		animation.setToX(creatureImage.getTranslateX()+50);
+		animation.setAutoReverse(false);
+		animation.play();
+	}
 
 
 	void eat() {

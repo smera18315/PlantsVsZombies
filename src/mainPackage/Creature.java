@@ -19,27 +19,7 @@ public class Creature {
         creatureImage.setTranslateY(y);
         this.type=type;
     }
-    void moveLeft(){
-        TranslateTransition animation = new TranslateTransition(
-                Duration.seconds(0.7), creatureImage
-        );
-        animation.setCycleCount(Animation.INDEFINITE);
-        animation.setFromX(creatureImage.getTranslateX());
-        animation.setToX(creatureImage.getTranslateX()-50);
-        animation.setAutoReverse(false);
-        animation.play();
 
-    }
-    void moveRight(){
-        TranslateTransition animation = new TranslateTransition(
-                Duration.seconds(0.7), creatureImage
-        );
-        animation.setCycleCount(Animation.INDEFINITE);
-        animation.setFromX(creatureImage.getTranslateX());
-        animation.setToX(creatureImage.getTranslateX()+50);
-        animation.setAutoReverse(false);   
-        animation.play();
-        }
 }
 //    public static void main(String[] args){
 //        ArrayList<ArrayList<Integer>> x=new ArrayList<ArrayList<Integer>>();
