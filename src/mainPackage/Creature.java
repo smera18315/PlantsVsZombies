@@ -1,22 +1,25 @@
 package mainPackage;
 
 
-public class Creature extends javafx.scene.image.ImageView {
+import javafx.scene.image.ImageView;
+
+public class Creature {
     boolean isAlive=true;
     private String type;
+    public ImageView creatureImage;
 
     Creature(int x, int y, String type){
         super();
-        setTranslateX(x);
-        setTranslateY(y);
+        creatureImage=new ImageView();
+        creatureImage.setTranslateX(x);
+        creatureImage.setTranslateY(y);
         this.type=type;
-        super.setVisible(true);
     }
     void moveLeft(){
-        setTranslateX(getTranslateX()-5);
+        creatureImage.setTranslateX(creatureImage.getTranslateX()-5);
     }
     void moveRight(){
-        setTranslateX(getTranslateX()+5);
+        creatureImage.setTranslateX(creatureImage.getTranslateX()+5);
     }
 }
 //    public static void main(String[] args){

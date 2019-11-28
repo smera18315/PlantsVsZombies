@@ -13,19 +13,19 @@ public abstract class Zombie extends Creature implements Cloneable, Serializable
 	private boolean isZombieAlive;
 	static int zombieCounter = 0;
 	Pair<Integer, Integer> zombieCoordinates;
-	ImageView zombieImage;
+//	ImageView zombieImage;
+//
+//    public ImageView getZombieImage() {
+//		return zombieImage;
+//	}
+//
+//
+//	public void setZombieImage(ImageView zombieImage) {
+//		this.zombieImage = zombieImage;
+//	}
 
-    public ImageView getZombieImage() {
-		return zombieImage;
-	}
 
-
-	public void setZombieImage(ImageView zombieImage) {
-		this.zombieImage = zombieImage;
-	}
-
-
-	public Zombie(String zombieName, int zombieID, int zombieHealth, int zombieWaitingTime, boolean isZombieAlive, Pair<Integer, Integer> zombieCoordinates, Image zombiePhoto) {
+	public Zombie(String zombieName, int zombieID, int zombieHealth, int zombieWaitingTime, boolean isZombieAlive, Pair<Integer, Integer> zombieCoordinates) {
         super(zombieCoordinates.getKey(),zombieCoordinates.getValue(),"Zombie");
         this.zombieName = zombieName;
         this.zombieID = zombieID;
@@ -33,11 +33,6 @@ public abstract class Zombie extends Creature implements Cloneable, Serializable
         this.zombieWaitingTime = zombieWaitingTime;
         this.isZombieAlive = isZombieAlive;
         this.zombieCoordinates = zombieCoordinates;
-        System.out.println(zombiePhoto.getUrl());
-        zombieImage = new ImageView(zombiePhoto);
-       // zombieImage.setImage(zombiePhoto);
-        System.out.println("hello2");
-
     }
 
 
@@ -62,7 +57,9 @@ class FireZombie extends Zombie{
 
 
     public FireZombie(Pair<Integer, Integer> zombieCoordinates) {
-        super("FireZombie", 1, 50, 1000, true, zombieCoordinates, new Image("file:Images/Zombies/fireZombie.png"));
+        super("FireZombie", 1, 50, 1000, true, zombieCoordinates);
+        creatureImage=new ImageView(new Image("file:Images/Zombies/fireZombie.png"));
+        creatureImage.setVisible(true);
 
     }
     void shoot(){
@@ -78,9 +75,12 @@ class FireZombie extends Zombie{
 class WaterZombie extends Zombie{
 
 	public WaterZombie(Pair<Integer, Integer> zombieCoordinates) {
-		super("WaterZombie", 2, 50, 1000, true, zombieCoordinates, new Image("file:Images/Zombies/waterZombie.png"));
+		super("WaterZombie", 2, 50, 1000, true, zombieCoordinates);
 		// TODO Auto-generated constructor stub
-	}
+        creatureImage=new ImageView(new Image("file:Images/Zombies/waterZombie.png"));
+        creatureImage.setVisible(true);
+
+    }
 	void shoot() {
 		
 	}
@@ -94,8 +94,12 @@ class WaterZombie extends Zombie{
 class ZombieBird extends Zombie{
 
 	public ZombieBird(Pair<Integer, Integer> zombieCoordinates) {
-		super("ZombieBird", 3, 30, 1000, true, zombieCoordinates, new Image("file:Images/Zombies/airZombie.png"));
-		// TODO Auto-generated constructor stub
+		super("ZombieBird", 3, 30, 1000, true, zombieCoordinates);
+        creatureImage=new ImageView(new Image("file:Images/Zombies/airZombie.png"));
+        creatureImage.setVisible(true);
+
+
+        // TODO Auto-generated constructor stub
 	}
 	void airgust() {
 		
@@ -111,7 +115,11 @@ class EarthZombie extends Zombie {
 
 
     public EarthZombie(Pair<Integer, Integer> zombieCoordinates) {
-        super("EarthZombie", 4, 60, 1000, true, zombieCoordinates, new Image("file:Images/Zombies/earthZombie.png"));
+        super("EarthZombie", 4, 60, 1000, true, zombieCoordinates);
+        super.creatureImage=new ImageView(new Image("file:Images/Zombies/earthZombie.png"));
+        creatureImage.setVisible(true);
+
+
         // TODO Auto-generated constructor stub
     }
 
