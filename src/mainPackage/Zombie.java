@@ -33,7 +33,11 @@ public abstract class Zombie extends Creature implements Cloneable, Serializable
         this.zombieWaitingTime = zombieWaitingTime;
         this.isZombieAlive = isZombieAlive;
         this.zombieCoordinates = zombieCoordinates;
-        zombieImage.setImage(zombiePhoto);
+        System.out.println(zombiePhoto.getUrl());
+        zombieImage = new ImageView(zombiePhoto);
+       // zombieImage.setImage(zombiePhoto);
+        System.out.println("hello2");
+
     }
 
 

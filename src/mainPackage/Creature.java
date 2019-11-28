@@ -10,6 +10,7 @@ public class Creature extends javafx.scene.image.ImageView {
         setTranslateX(x);
         setTranslateY(y);
         this.type=type;
+        super.setVisible(true);
     }
     void moveLeft(){
         setTranslateX(getTranslateX()-5);
