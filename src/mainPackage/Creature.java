@@ -1,13 +1,5 @@
 package mainPackage;
 
-import javax.swing.*;
-
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
-import java.io.Serializable;
-import java.util.ArrayList;
 
 public class Creature extends javafx.scene.image.ImageView {
     boolean isAlive=true;

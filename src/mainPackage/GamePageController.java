@@ -20,6 +20,7 @@ import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -47,7 +48,16 @@ public class GamePageController {
 	
 	@FXML
     public void lawnMower(MouseEvent e){
+		ImageView newImage = new ImageView(new Image("file:Images/Zombies/waterZombie.png"));
         ImageView lawnMower = (ImageView) e.getSource();
+        System.out.println(lawnMower.getParent());
+       ((Pane) lawnMower.getParent()).getChildren().add(newImage);
+        //Pane pain = new Pane(lawnMower.getParent());
+        //System.out.println(pain);
+        //pain.getChildren().add(newImage);
+        newImage.setX(lawnMower.getX());
+		newImage.setY(lawnMower.getY());
+		newImage.setVisible(true);
         TranslateTransition translate = new TranslateTransition();  
         translate.setNode(lawnMower);  
         translate.setByX(1500);  
