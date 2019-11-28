@@ -1,7 +1,11 @@
 package mainPackage;
 
 
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 public class Creature {
     boolean isAlive=true;
@@ -16,11 +20,22 @@ public class Creature {
         this.type=type;
     }
     void moveLeft(){
-        creatureImage.setTranslateX(creatureImage.getTranslateX()-5);
+        TranslateTransition animation = new TranslateTransition(
+                Duration.seconds(0.7), creatureImage
+        );
+        animation.setCycleCount(Animation.INDEFINITE);
+        animation.setFromX(creatureImage.getTranslateX());
+        animation.setToX(creatureImage.getTranslateX()-5);
+        animation.setAutoReverse(true);
     }
     void moveRight(){
-        creatureImage.setTranslateX(creatureImage.getTranslateX()+5);
-    }
+        TranslateTransition animation = new TranslateTransition(
+                Duration.seconds(0.7), creatureImage
+        );
+        animation.setCycleCount(Animation.INDEFINITE);
+        animation.setFromX(creatureImage.getTranslateX());
+        animation.setToX(creatureImage.getTranslateX()+5);
+        animation.setAutoReverse(true);    }
 }
 //    public static void main(String[] args){
 //        ArrayList<ArrayList<Integer>> x=new ArrayList<ArrayList<Integer>>();
