@@ -19,7 +19,7 @@ public class Creature {
         creatureImage.setTranslateX(creatureImage.getTranslateX()-5);
     }
     void moveRight(){
-        creatureImage.setTranslateX(creatureImage.getTranslateX()+50);
+        creatureImage.setTranslateX(creatureImage.getTranslateX()+5);
     }
 }
 //    public static void main(String[] args){
