@@ -1,12 +1,30 @@
 package mainPackage;
 
+import javax.swing.*;
+
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public interface Creature {
+public class Creature extends javafx.scene.image.ImageView {
+    boolean isAlive=true;
+    private String type;
 
-
-
+    Creature(int x, int y, String type){
+        super();
+        setTranslateX(x);
+        setTranslateY(y);
+        this.type=type;
+    }
+    void moveLeft(){
+        setTranslateX(getTranslateX()-5);
+    }
+    void moveRight(){
+        setTranslateX(getTranslateX()+5);
+    }
 }
 //    public static void main(String[] args){
 //        ArrayList<ArrayList<Integer>> x=new ArrayList<ArrayList<Integer>>();

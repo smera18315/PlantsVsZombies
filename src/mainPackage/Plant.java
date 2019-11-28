@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 import javafx.util.Pair;
 
-public abstract class Plant implements Serializable, Runnable{
+public abstract class Plant extends Creature implements Serializable, Runnable, Cloneable {
 	/**
 	 * 
 	 */
@@ -17,7 +17,7 @@ public abstract class Plant implements Serializable, Runnable{
 	public Plant(String plantName, String plantType, int plantID, int plantHealth, int plantWaitingTime,
 			int plantSunCost, int plantAttack, boolean isPlantAlive, boolean isPlantLocked,
 			Pair<Integer, Integer> plantCoordinates) {
-		super();
+		super(plantCoordinates.getKey(),plantCoordinates.getValue(),"Plant");
 		this.plantName = plantName;
 		this.plantType = plantType;
 		this.plantID = plantID;
