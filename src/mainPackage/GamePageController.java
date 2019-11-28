@@ -53,8 +53,8 @@ public class GamePageController {
         System.out.println(lawnMower.getParent());
 		Zombie z = new FireZombie(new Pair<Integer, Integer>((int)(lawnMower.getX()),(int)(lawnMower.getY())));
 
-       ((Pane) lawnMower.getParent()).getChildren().add(z.getZombieImage());
-       z.setVisible(true);
+       ((Pane) lawnMower.getParent()).getChildren().add(z.creatureImage);
+       //z.setVisible(true);
         //Pane pain = new Pane(lawnMower.getParent());
         //System.out.println(pain);
         //pain.getChildren().add(newImage);
@@ -62,7 +62,7 @@ public class GamePageController {
 		newImage.setY(lawnMower.getY());
 		newImage.setVisible(true);
 		//Zombie z = new FireZombie(new Pair<Integer, Integer>((int)(lawnMower.getX()),(int)(lawnMower.getY())));
-		z.getZombieImage().();
+		//z.getZombieImage().();
 		z.moveRight();
 		z.moveRight();
 		z.moveRight();

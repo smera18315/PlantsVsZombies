@@ -25,8 +25,10 @@ public class Creature {
         );
         animation.setCycleCount(Animation.INDEFINITE);
         animation.setFromX(creatureImage.getTranslateX());
-        animation.setToX(creatureImage.getTranslateX()-5);
-        animation.setAutoReverse(true);
+        animation.setToX(creatureImage.getTranslateX()-50);
+        animation.setAutoReverse(false);
+        animation.play();
+
     }
     void moveRight(){
         TranslateTransition animation = new TranslateTransition(
@@ -34,8 +36,10 @@ public class Creature {
         );
         animation.setCycleCount(Animation.INDEFINITE);
         animation.setFromX(creatureImage.getTranslateX());
-        animation.setToX(creatureImage.getTranslateX()+5);
-        animation.setAutoReverse(true);    }
+        animation.setToX(creatureImage.getTranslateX()+50);
+        animation.setAutoReverse(false);   
+        animation.play();
+        }
 }
 //    public static void main(String[] args){
 //        ArrayList<ArrayList<Integer>> x=new ArrayList<ArrayList<Integer>>();
