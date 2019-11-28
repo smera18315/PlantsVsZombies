@@ -45,7 +45,12 @@ public class GamePageController {
 		}
 	}
 	double  orgSceneX ,   orgSceneY, orgTranslateX, orgTranslateY;
-	
+	void zombieSetup()
+	{
+		ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
+		//Zombie z1 = new Z
+		
+	}
 	@FXML
     public void lawnMower(MouseEvent e){
 		ImageView newImage = new ImageView(new Image("file:Images/Zombies/waterZombie.png"));
@@ -143,9 +148,9 @@ public class GamePageController {
 	        } 
 	        e.consume();
 	    }
-	 public static Plant parseURL(String s, Pair<Integer,Integer> a){	//fix this so that it runs on other systems
+	 public static Plant parseURL(String s, Pair<Integer,Integer> a, Pane currentPane){	//fix this so that it runs on other systems
 	        if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/PeashooterGif.gif")){
-	            return new PeaShooter(a);
+	            return new PeaShooter(a, currentPane);
 	        }
 	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/SunflowerGif.gif")){
 	            return new SunFlower(a);
@@ -160,7 +165,7 @@ public class GamePageController {
 	            return null;
 	        }
 	    }
-	 public void dragDropped(DragEvent e) {
+	 public void dragDropped(DragEvent e) throws InterruptedException {
 		ImageView cell = (ImageView) e.getTarget();
 	    Dragboard db = e.getDragboard();
 	    boolean flag = false;
@@ -182,9 +187,8 @@ public class GamePageController {
 		        Pair<Integer, Integer> plantCoordinate = new Pair<Integer, Integer>((int)cell.getLayoutX(), (int)cell.getLayoutY());
 		        //System.out.println("hi22");
 
-		        Plant newPlant = parseURL(db.getString(), plantCoordinate);	//parseURL is a function that takes in the url, strips and gets the name from it and returns a plant type variable
+		        Plant newPlant = parseURL(db.getString(), plantCoordinate, (Pane)(cell.getParent()));	//parseURL is a function that takes in the url, strips and gets the name from it and returns a plant type variable
 		        System.out.println(yardGrid);
-		        
 		        
 		        yardGrid.get(x).set(y, newPlant);
 		        System.out.println(yardGrid);
@@ -195,6 +199,8 @@ public class GamePageController {
 		        //System.out.println("hi5");
 
 		        cell.setUserData(newPlant);
+		        newPlant.attack();
+
 		        //System.out.println("hi");
 
 		      //  System.out.println(cell.getUserData());

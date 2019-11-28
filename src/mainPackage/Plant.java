@@ -4,6 +4,7 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import javafx.scene.layout.Pane;
 import javafx.util.Pair;
 
 public abstract class Plant extends Creature implements Serializable, Runnable, Cloneable {
@@ -144,12 +145,13 @@ class PeaShooter extends Plant
 	 * 
 	 */
 	private static final long serialVersionUID = -1760906844762856176L;
+	
 	ArrayList<Bullet> peaList;
-	public PeaShooter(Pair<Integer, Integer> plantCoordinates) {
+	public PeaShooter(Pair<Integer, Integer> plantCoordinates, Pane currentPane) {
 		super("Peashooter", "Pea Shooting Plant", 2, 100, 20, 100, 10, true, false,	plantCoordinates);
-		peaList=new ArrayList<Bullet>(1000);
-		for (int i=0;i<1000;i++){
-			peaList.add(new Bullet(this));
+		peaList=new ArrayList<Bullet>(5);
+		for (int i=0;i<5;i++){
+			peaList.add(new Bullet(this, currentPane));
 		}
 	}
 
@@ -157,7 +159,7 @@ class PeaShooter extends Plant
 	public void attack() throws InterruptedException {
 		for (int i=0;i<peaList.size();i++){
 			peaList.get(i).moveRight();
-			TimeUnit.MILLISECONDS.sleep(500);
+			//TimeUnit.MILLISECONDS.sleep(10);
 		}
 	}
 
