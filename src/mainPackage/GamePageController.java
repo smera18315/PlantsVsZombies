@@ -121,25 +121,14 @@ public class GamePageController {
 		//Zombie z1 = new Z
 		
 	}
-	
-	public void sunGenerator() {
-		ArrayList<Sun> sunArr=new ArrayList<Sun>(5);
-		for (int i=0;i<5;i++) {
-			sunArr.add(new Sun((Pane) lawnMower.getParent()));
-		}
-		for (int i=0;i<5;i++) {
-		       //((Pane) lawnMower.getParent()).getChildren().add(sunArr.get(i).creatureImage);
-			System.out.println("sun");
-			sunArr.get(i).moveDown();			
-			System.out.println("sun2");
+	int ctr=0;
 
-		}
-		int ctr=0;
-		for (int i=0;i<5;i++) {
-			if (sunArr.get(i).creatureImage.isVisible()) {
-				ctr++;
-				sunArr.set(i, null);
-			}
+	public void sunGenerator() {
+		Sun sun=new Sun(mainPane);
+		sun.moveDown();
+		if (sun.creatureImage.isVisible()) {
+			ctr++;
+			sun=null;
 		}
 	}
 	
@@ -147,7 +136,7 @@ public class GamePageController {
     public void lawnMower(MouseEvent e){
         ImageView lawnMower = (ImageView) e.getSource();
 
-		System.out.println(ctr);
+		//System.out.println(ctr);
 		ImageView newImage = new ImageView(new Image("file:Images/Zombies/waterZombie.png"));
         System.out.println(lawnMower.getParent());
 		Zombie z = new FireZombie(new Pair<Integer, Integer>((int)(lawnMower.getX()),(int)(lawnMower.getY())));
