@@ -4,8 +4,11 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import javafx.animation.Animation;
+import javafx.animation.TranslateTransition;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 import javafx.util.Pair;
 import mainPackage.GamePageController.MyTimer;
 
@@ -122,8 +125,13 @@ class SunFlower extends Plant
 	 */
 	private static final long serialVersionUID = -801862830491365216L;
 	private int generationSpeed = 10;
-	public SunFlower(Pair<Integer, Integer> plantCoordinates, int x, int y) {
+	ArrayList<Sun> sunList;
+	public SunFlower(Pair<Integer, Integer> plantCoordinates,Pane currentPane, int x, int y) {
 		super("Sunflower", "Sun Producing Plant", 1, 100, 20, 50, 0, true, false, plantCoordinates,x,y);
+		sunList=new ArrayList<Sun>(5);
+		for (int i=0;i<5;i++){
+			sunList.add(new Sun(currentPane));
+		}
 		// TODO Auto-generated constructor stub
 	}
 
@@ -131,10 +139,8 @@ class SunFlower extends Plant
 	public void attack() {
 			}
 	
-	public void generateSun()
-	{
-		
-		
+	public void generateSun(){
+
 	}
 
 	@Override

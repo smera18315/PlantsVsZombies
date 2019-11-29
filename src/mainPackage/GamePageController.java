@@ -14,6 +14,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
@@ -32,7 +33,21 @@ import javafx.util.Pair;
 
 public class GamePageController {
 	@FXML
+	static
 	Pane mainPane;
+	Label sunCount;
+	int sunCounter=0;
+	
+	public void sunGenerator() {
+		Sun sun=new Sun(mainPane);
+		sun.moveDown();
+		if (sun.creatureImage.isVisible()) {
+			sun=null;
+			sunCounter++;
+			String s=Integer.toString(sunCounter);
+			sunCount.setText(s);
+		}
+	}
 	
     public class MyTimer extends AnimationTimer {
     	
@@ -235,7 +250,7 @@ public class GamePageController {
 	            return new PeaShooter(a, currentPane,x,y);
 	        }
 	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/SunflowerGif.gif")){
-	            return new SunFlower(a,x,y);
+	            return new SunFlower(a,mainPane,x,y);
 	        }
 	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/WalnutGif.gif")){
 	            return new Walnut(a,x,y);

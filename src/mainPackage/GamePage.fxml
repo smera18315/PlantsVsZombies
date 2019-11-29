@@ -129,7 +129,7 @@
             <Image url="@../../Images/Manure.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="89.0" prefHeight="20.0" prefWidth="79.0" text="0" textAlignment="JUSTIFY" />
+      <Label fx:id="sunCount" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="89.0" prefHeight="20.0" prefWidth="79.0" text="0" textAlignment="JUSTIFY" />
       <ImageView fitHeight="99.0" fitWidth="75.0" layoutX="1031.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/Stopwatch.png" />
