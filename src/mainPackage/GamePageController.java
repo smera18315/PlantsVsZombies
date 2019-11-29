@@ -120,8 +120,10 @@ public class GamePageController {
 		//Zombie z1 = new Z
 		
 	}
-	
-	public void sunGenerator() {
+	@FXML
+    public void lawnMower(MouseEvent e){
+        ImageView lawnMower = (ImageView) e.getSource();
+
 		ArrayList<Sun> sunArr=new ArrayList<Sun>(5);
 		for (int i=0;i<5;i++) {
 			sunArr.add(new Sun((Pane) lawnMower.getParent()));
@@ -140,12 +142,6 @@ public class GamePageController {
 				sunArr.set(i, null);
 			}
 		}
-	}
-	
-	@FXML
-    public void lawnMower(MouseEvent e){
-        ImageView lawnMower = (ImageView) e.getSource();
-
 		System.out.println(ctr);
 		ImageView newImage = new ImageView(new Image("file:Images/Zombies/waterZombie.png"));
         System.out.println(lawnMower.getParent());
