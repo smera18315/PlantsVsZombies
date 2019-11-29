@@ -24,7 +24,7 @@ public class Sun extends Creature {
 
         creatureImage.setFitHeight(70);
         creatureImage.setFitWidth(70);
-        //System.out.println(currentPane);
+        System.out.println(currentPane);
         currentPane.getChildren().add(creatureImage);
         creatureImage.setX(xCoo);
 
