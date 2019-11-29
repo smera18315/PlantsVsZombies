@@ -12,24 +12,23 @@ import java.util.Random;
 public class Sun extends Creature {
 
 
+    Random r=new Random();
 
     Sun(Pane currentPane) {
         super(100, 1000, "Sun"); // Random Values as of now, we'll have to check what the top of the pain is
-        Random r=new Random();
-        int xCoo=100+r.nextInt(120);
+        int xCoo=100+r.nextInt(1000);
        
         creatureImage=new ImageView(new Image("file:Images/Sun.png"));
-        System.out.println("X coordinate: "+creatureImage.getX());
-        System.out.println("Y coordinate: "+creatureImage.getY());
+        //System.out.println("X coordinate: "+creatureImage.getX());
+        //System.out.println("Y coordinate: "+creatureImage.getY());
 
-        creatureImage.setFitHeight(50);
-        creatureImage.setFitWidth(50);
+        creatureImage.setFitHeight(70);
+        creatureImage.setFitWidth(70);
+        //System.out.println(currentPane);
         currentPane.getChildren().add(creatureImage);
         creatureImage.setX(xCoo);
-//        ((GridPane) currentPane).setColumnIndex(creatureImage,plant.y);
-//        ((GridPane) currentPane).setRowIndex(creatureImage,plant.x);
-//
-        System.out.println(creatureImage.getParent());
+
+        //System.out.println(creatureImage.getParent());
 
         creatureImage.setVisible(false);
     }
@@ -40,15 +39,15 @@ public class Sun extends Creature {
         );
         //animation.setCycleCount(Animation.INDEFINITE);
         animation.setFromY(creatureImage.getTranslateY()-150);
-        System.out.println("init " + (creatureImage.getTranslateY()-150));
-        animation.setToY(creatureImage.getTranslateY()+350);
-        System.out.println("final "+ (creatureImage.getTranslateY()+350));
+       // System.out.println("init " + (creatureImage.getTranslateY()-150));
+        animation.setToY(creatureImage.getTranslateY()+100+r.nextInt(500));
+        //System.out.println("final "+ (creatureImage.getTranslateY()+350));
         animation.setAutoReverse(false);
         animation.play();
-        creatureImage.setOnMouseClicked(event1 -> creatureImage.setVisible(false));
+        //creatureImage.setOnMouseClicked(event1 -> creatureImage.setVisible(false));
     }
     
-    void moveAjeeb() {
+    void movecurvedPath() {
     	creatureImage.setVisible(true);
         TranslateTransition animation = new TranslateTransition(
                 Duration.seconds(1.5), creatureImage
