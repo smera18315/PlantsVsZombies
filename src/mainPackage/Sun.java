@@ -45,5 +45,6 @@ public class Sun extends Creature {
         System.out.println("final "+ (creatureImage.getTranslateY()+350));
         animation.setAutoReverse(false);
         animation.play();
+        creatureImage.setOnMouseClicked(event1 -> creatureImage.setVisible(false));
     }
 }
