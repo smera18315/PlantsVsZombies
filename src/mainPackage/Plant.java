@@ -10,7 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import javafx.util.Pair;
-import mainPackage.GamePageController.MyTimer;
+import mainPackage.GamePageController.peaGeneratorThread;
+import mainPackage.GamePageController.sunFlowerGeneratorThread;
 
 public abstract class Plant extends Creature implements Serializable, Runnable, Cloneable {
 	/**
@@ -125,9 +126,11 @@ class SunFlower extends Plant
 	 */
 	private static final long serialVersionUID = -801862830491365216L;
 	private int generationSpeed = 10;
+	Pane currentPane;
 	ArrayList<Sun> sunList;
 	public SunFlower(Pair<Integer, Integer> plantCoordinates,Pane currentPane, int x, int y) {
 		super("Sunflower", "Sun Producing Plant", 1, 100, 20, 50, 0, true, false, plantCoordinates,x,y);
+		this.currentPane = currentPane;
 		sunList=new ArrayList<Sun>(5);
 		for (int i=0;i<5;i++){
 			sunList.add(new Sun(currentPane));
@@ -137,6 +140,8 @@ class SunFlower extends Plant
 
 	@Override
 	public void attack() {
+		sunFlowerGeneratorThread p1 = new GamePageController().new sunFlowerGeneratorThread(this, currentPane);
+        p1.start();
 			}
 	
 	public void generateSun(){
@@ -169,6 +174,7 @@ class PeaShooter extends Plant
 	@Override
 	public void attack() throws InterruptedException {
 		Zombie z = new FireZombie(new Pair<Integer, Integer>(700,300));
+		
 		Pane currentPane = ((Pane) peaList.get(1).creatureImage.getParent());
 		currentPane.getChildren().add(z.creatureImage);
         System.out.println(currentPane);
@@ -181,9 +187,9 @@ class PeaShooter extends Plant
         peaList.get(1).moveRight();
 		
         //z.creatureImage.setVisible(true);
-        
-        MyTimer t1 = new GamePageController().new MyTimer(peaList.get(1), z);
-        t1.start();
+        peaGeneratorThread p1 = new GamePageController().new peaGeneratorThread(this, currentPane, z);
+        p1.start();
+        //t1.start();
 
 //		for (int i=0;i<peaList.size();i++){
 //			peaList.get(1).moveRight();

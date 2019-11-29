@@ -1,7 +1,9 @@
 package mainPackage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import javafx.animation.*;
 import javafx.event.ActionEvent;
@@ -9,6 +11,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
@@ -33,28 +36,43 @@ import javafx.util.Pair;
 
 public class GamePageController {
 	@FXML
-	static
+	void setPane(MouseEvent e)
+	{
+		mainPane=(Pane)((Node) e.getSource()).getParent();
+		((Node) e.getSource()).setMouseTransparent(true);
+	}
+
+	{
+		sunGeneratorThread s1 = new sunGeneratorThread();
+		s1.start();
+	}
+	@FXML
 	Pane mainPane;
+	@FXML
 	Label sunCount;
 	int sunCounter=0;
 	
 	public void sunGenerator() {
+		//System.out.println(mainPane);
 		Sun sun=new Sun(mainPane);
 		sun.moveDown();
 		if (sun.creatureImage.isVisible()) {
-			sun=null;
-			sunCounter++;
-			String s=Integer.toString(sunCounter);
-			sunCount.setText(s);
-		}
+			sun.creatureImage.setOnMouseClicked(e->{
+				sun.creatureImage.setVisible(false);
+				sunCounter++;
+				String s=Integer.toString(sunCounter);
+				sunCount.setText(s);
+
+			});
+					}
 	}
 	
-    public class MyTimer extends AnimationTimer {
+public class collisionCheck extends AnimationTimer {
     	
     	Bullet pea;
     	Zombie z;
     	
-    	MyTimer(Bullet pea, Zombie z)
+    	collisionCheck(Bullet pea, Zombie z)
     	{
     		this.pea = pea;
     		this.z = z;
@@ -69,7 +87,88 @@ public class GamePageController {
 
         
     }
+    
+public class sunGeneratorThread extends AnimationTimer {
+    	
+    	int counter = 0;
+
+        @Override
+        public void handle(long now) {
+        
+        	counter = counter + 1;
+        	if(counter%600 == 0)
+        	{
+        		counter = 0;
+        		sunGenerator();
+        	}
+        }
+
+        
+    }
+
+    
+ public class peaGeneratorThread extends AnimationTimer {
+    	
+    	Plant plant;
+    	Pane pane;
+    	Zombie z;
+    	int counter = 0;
+    	peaGeneratorThread(Plant plant, Pane pane,Zombie z)
+    	{
+    		this.plant = plant;
+    		this.pane = pane;
+    		this.z = z;
+    	}
+    	
+
+        @Override
+        public void handle(long now) {
+        	
+        	counter = counter + 1;
+        	if(counter%60 == 0)
+        	{
+        		counter = 0;
+        		Bullet pea = new Bullet(plant,pane);
+            	pea.moveRight();
+            	collisionCheck t1 = new collisionCheck(pea, z);
+                t1.start();
+        	}
+        
+
+        }
+
+        
+    }
 	
+ public class sunFlowerGeneratorThread extends AnimationTimer {
+ 	
+ 	Plant plant;
+ 	Pane pane;
+ 	int counter = 0;
+ 	sunFlowerGeneratorThread(Plant plant, Pane pane)
+ 	{
+ 		this.plant = plant;
+ 		this.pane = pane;
+ 	}
+ 	
+
+     @Override
+     public void handle(long now) {
+     	
+     	counter = counter + 1;
+     	if(counter%600 == 0)
+     	{
+     		counter = 0;
+     		Sun sun = new Sun(pane);
+         	sun.movecurvedPath();
+            //t1.start();
+     	}
+     
+
+     }
+
+     
+ }
 
 	  public void checkCollisions(Bullet bullet, Zombie zombie) {
 		  
@@ -77,6 +176,8 @@ public class GamePageController {
 
 		    //Rectangle2D zombieRectangle = new Rectangle2D(zombie.creatureImage.getX(), zombie.creatureImage.getY(), zombie.creatureImage.getFitWidth(), zombie.creatureImage.getFitHeight());
 		    if (bullet.creatureImage.getBoundsInParent().intersects(zombie.creatureImage.getBoundsInParent())) {
+		    	
+		    	bullet.creatureImage.setVisible(false);
                 
                System.out.println("Collision");
                 //zombie.creatureImage.setVisible(false);
@@ -250,7 +351,7 @@ public class GamePageController {
 	            return new PeaShooter(a, currentPane,x,y);
 	        }
 	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/SunflowerGif.gif")){
-	            return new SunFlower(a,mainPane,x,y);
+	            return new SunFlower(a,currentPane,x,y);
 	        }
 	        else if (s.equals("file:/C:/Users/Smera/eclipse-workspace/PlantsVsZombies/Images/WalnutGif.gif")){
 	            return new Walnut(a,x,y);

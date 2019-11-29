@@ -34,9 +34,9 @@ public class Bullet extends Creature {
         TranslateTransition animation = new TranslateTransition(
                 Duration.seconds(1.5), creatureImage
         );
-        animation.setCycleCount(Animation.INDEFINITE);
+        //animation.setCycleCount(Animation.INDEFINITE);
         animation.setFromX(creatureImage.getTranslateX()+50);
-        animation.setToX(creatureImage.getTranslateX()+750);
+        animation.setToX(creatureImage.getTranslateX()+1050);
         animation.setAutoReverse(false);
         animation.play();
     }

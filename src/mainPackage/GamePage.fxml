@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainPackage.GamePageController">
    <children>
-      <ImageView fitHeight="722.0" fitWidth="1285.0" layoutX="-1.0" layoutY="76.0" pickOnBounds="true">
+      <ImageView fitHeight="722.0" fitWidth="1285.0" layoutX="-1.0" layoutY="76.0" onMouseEntered="#setPane" pickOnBounds="true">
          <image>
             <Image url="@../../Images/Background.png" />
          </image>
