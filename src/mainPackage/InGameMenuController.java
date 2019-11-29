@@ -49,5 +49,19 @@ public class InGameMenuController {
 		stage.setScene(new Scene(root));
 
 	    }
+	
+	@FXML
+    public void mouseResumeEnterGame(MouseEvent e){
+        ImageView m = (ImageView) e.getSource();
+        m.setImage(new Image("file:Images/ResumeButtonBright.png"));
+
+    }
+	
+	@FXML
+    public void mouseResumeExitGame(MouseEvent e){
+        ImageView m = (ImageView) e.getSource();
+        m.setImage(new Image("file:Images/ResumeButton.png"));
+
+    }
 
 }
