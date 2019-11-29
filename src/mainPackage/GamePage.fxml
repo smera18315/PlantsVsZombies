@@ -209,5 +209,16 @@
             <ImageView fitHeight="93.0" fitWidth="75.0" onDragDropped="#dragDropped" onDragOver="#dragOver" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="1" />
          </children>
       </GridPane>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="576.0" layoutY="645.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="93.0" fitWidth="406.0" layoutX="526.0" layoutY="703.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/statusBar.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="126.0" fitWidth="85.0" layoutX="865.0" layoutY="672.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/zombieFace.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>
