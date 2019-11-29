@@ -31,7 +31,9 @@ import javafx.util.Pair;
 
 
 public class GamePageController {
-	@FXML Pane mainPane;
+	@FXML
+	Pane mainPane;
+	
     public class MyTimer extends AnimationTimer {
     	
     	Bullet pea;
@@ -59,9 +61,9 @@ public class GamePageController {
 		    //Rectangle2D bulletRectangle = new Rectangle2D(bullet.creatureImage.getX(), bullet.creatureImage.getY(), bullet.creatureImage.getFitWidth(), bullet.creatureImage.getFitHeight());
 
 		    //Rectangle2D zombieRectangle = new Rectangle2D(zombie.creatureImage.getX(), zombie.creatureImage.getY(), zombie.creatureImage.getFitWidth(), zombie.creatureImage.getFitHeight());
-		    if (bullet.creatureImage.intersects(zombie.creatureImage.getBoundsInLocal())) {
+		    if (bullet.creatureImage.getBoundsInParent().intersects(zombie.creatureImage.getBoundsInParent())) {
                 
-               // System.out.println("Collision");
+               System.out.println("Collision");
                 //zombie.creatureImage.setVisible(false);
             }
 		    
