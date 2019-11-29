@@ -3,6 +3,7 @@ package mainPackage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import javafx.animation.*;
@@ -35,8 +36,53 @@ import javafx.util.Pair;
 
 
 public class GamePageController {
+	
+public class addRandZombie extends AnimationTimer {
+	Random r = new Random();
+
+        @Override
+        public void handle(long now) {
+        
+        	Zombie zombie = new FireZombie(new Pair<Integer, Integer>(300,300));
+        	if(gridPane!=null)
+        	{
+        		int row = 1 + r.nextInt(5);
+        		if(yardGrid.get(9).get(row)==null)
+        		{
+            		gridPane.getChildren().add(zombie.creatureImage);
+
+        			yardGrid.get(9).set(row, zombie);
+        			zombie.creatureImage.setFitHeight(160);
+                    zombie.creatureImage.setFitWidth(110);
+            		
+            		gridPane.setColumnIndex(zombie.creatureImage, 9);
+            		gridPane.setRowIndex(zombie.creatureImage, row);
+            		zombie.moveLeft();
+        		}
+        		
+        		
+        	}
+    		
+
+        }
+
+}
+
 	void zombieGenerator()
 	{
+		Zombie zombie = new FireZombie(new Pair<Integer, Integer>(300,300));
+		//zombie=randomZombieGenerator();
+		zombie.moveLeft();
+		System.out.println("zombie");
+//		if (sun.creatureImage.isVisible()) {
+//			sun.creatureImage.setOnMouseClicked(e->{
+//				sun.creatureImage.setVisible(false);
+//				sunCounter++;
+//				String s=Integer.toString(sunCounter);
+//				sunCount.setText(s);
+//
+//			});
+//		}
 		
 	}
 	@FXML
@@ -48,8 +94,20 @@ public class GamePageController {
 			((Node) e.getSource()).setMouseTransparent(true);
 		}
 	}
+	
+	@FXML
+	void setGrid(MouseEvent e)
+	{
+		if(mainPane==null && ((Node) e.getSource()).getParent().getClass().getName()=="Grid")
+		{
+			mainPane=(GridPane)((Node) e.getSource()).getParent();
+			((Node) e.getSource()).setMouseTransparent(true);
+		}
+	}
 
 	{
+		addRandZombie ard1 = new addRandZombie();
+		ard1.start();
 		sunGeneratorThread s1 = new sunGeneratorThread();
 		s1.start();
 	}
@@ -57,14 +115,13 @@ public class GamePageController {
 	{
 		sunCount.setText(s);
 	}
-	@FXML
-	Pane mainPane;
-	@FXML
-	Label sunCount;
+	@FXML Pane mainPane;
+	@FXML Label sunCount;
+	@FXML GridPane gridPane;
 	static int sunCounter=0;
 	
 	public void sunGenerator() {
-		System.out.println("sg"+mainPane);
+		//System.out.println("sg"+mainPane);
 		Sun sun=new Sun(mainPane);
 		sun.moveDown();
 		if (sun.creatureImage.isVisible()) {
@@ -75,7 +132,7 @@ public class GamePageController {
 				sunCount.setText(s);
 
 			});
-					}
+		}
 	}
 	
 public class collisionCheck extends AnimationTimer {
@@ -111,6 +168,7 @@ public class sunGeneratorThread extends AnimationTimer {
         	{
         		counter = 0;
         		sunGenerator();
+        		zombieGenerator();
         	}
         }
 
@@ -199,7 +257,7 @@ public class sunGeneratorThread extends AnimationTimer {
 		    	
 		    	bullet.creatureImage.setVisible(false);
                 
-               System.out.println("Collision");
+               //System.out.println("Collision");
                 //zombie.creatureImage.setVisible(false);
             }
 		    
@@ -234,7 +292,7 @@ public class sunGeneratorThread extends AnimationTimer {
 //	        }
 //	    }
 	LevelGame thisLevel = new LevelGame();
-	ArrayList<ArrayList<Plant>> yardGrid = new ArrayList<ArrayList<Plant>>();
+	ArrayList<ArrayList<Creature>> yardGrid = new ArrayList<ArrayList<Creature>>();
 	ArrayList<Plant> constructorList = new ArrayList<Plant>(5);
 	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
 
@@ -244,15 +302,15 @@ public class sunGeneratorThread extends AnimationTimer {
 			constructorList.add(null);
 		}
 		
-		for(int i=0; i<=9;++i)
+		for(int i=0; i<=10;++i)
 		{
-			ArrayList<Plant> list = new ArrayList<Plant>(constructorList);
+			ArrayList<Creature> list = new ArrayList<Creature>(constructorList);
 			yardGrid.add(list);
 		}
 		
 
 	}
-	double  orgSceneX ,   orgSceneY, orgTranslateX, orgTranslateY;
+	//double  orgSceneX ,   orgSceneY, orgTranslateX, orgTranslateY;
 	void zombieSetup()
 	{
 		ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
@@ -408,7 +466,7 @@ public class sunGeneratorThread extends AnimationTimer {
 		        Plant newPlant = parseURL(db.getString(), plantCoordinate, (Pane)(cell.getParent()),x,y);	//parseURL is a function that takes in the url, strips and gets the name from it and returns a plant type variable
 		        newPlant.x = x;
 		        newPlant.y = y;
-		        System.out.println(yardGrid);
+		        //System.out.println(yardGrid);
 		        
 		        yardGrid.get(x).set(y, newPlant);
 		        System.out.println(yardGrid);
@@ -416,16 +474,24 @@ public class sunGeneratorThread extends AnimationTimer {
 		        System.out.println("hi");
 
 		        thisLevel.addPlants(newPlant);
-		        System.out.println("hi5");
 
 		        cell.setUserData(newPlant);
-				System.out.println("yass");
+		        if(newPlant.getPlantName()=="Peashooter")
+		        {
+			        
+		        	System.out.println("hi6"+yardGrid.get(9));
 
-		        newPlant.attack();
-				System.out.println("yass");
+		        	newPlant.attack((Zombie)(yardGrid.get(9).get(x)));
+			        System.out.println("hi5");
 
+		        }
+		        else
+		        {
+			        newPlant.attack();
 
-		        //System.out.println("hi");
+		        }
+
+		        System.out.println("hi");
 
 		      //  System.out.println(cell.getUserData());
 		       // System.out.println("h2");

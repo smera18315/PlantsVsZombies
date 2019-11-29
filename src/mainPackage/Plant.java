@@ -24,6 +24,14 @@ public abstract class Plant extends Creature implements Serializable, Runnable, 
 	int x,y;
 	private static final long serialVersionUID = 942001018781760401L;
 	private String plantName, plantType;
+	public String getPlantName() {
+		return plantName;
+	}
+
+	public void setPlantName(String plantName) {
+		this.plantName = plantName;
+	}
+
 	private int plantID, plantHealth, plantWaitingTime, plantSunCost, plantAttack;
 	private boolean isPlantAlive, isPlantLocked;
 	static int plantCounter = 0;
@@ -48,6 +56,7 @@ public abstract class Plant extends Creature implements Serializable, Runnable, 
 	}
 
 	public abstract void attack() throws InterruptedException;
+	public abstract void attack(Zombie z) throws InterruptedException;
 	public void heal(int healPoints)
 	{
 		plantHealth = plantHealth + healPoints;
@@ -81,6 +90,12 @@ class Walnut extends Plant
 
 	@Override
 	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void attack(Zombie z) throws InterruptedException {
 		// TODO Auto-generated method stub
 		
 	}
@@ -149,6 +164,12 @@ class CherryBomb extends Plant
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void attack(Zombie z) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
 
@@ -185,6 +206,12 @@ class SunFlower extends Plant
 	public void run() {			//Generate Sun
 		
 	}
+
+	@Override
+	public void attack(Zombie z) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
 
@@ -203,21 +230,25 @@ class PeaShooter extends Plant
 			peaList.add(new Bullet(this, currentPane));
 		}
 	}
-
 	@Override
-	public void attack() throws InterruptedException {
-		Zombie z = new FireZombie(new Pair<Integer, Integer>(700,300));
+	public void attack()
+	{
+		
+	}
+
+	public void attack(Zombie z) throws InterruptedException {
+		//Zombie z = new FireZombie(new Pair<Integer, Integer>(700,300));
 		
 		Pane currentPane = ((Pane) peaList.get(1).creatureImage.getParent());
-		currentPane.getChildren().add(z.creatureImage);
-        System.out.println(currentPane);
+		//currentPane.getChildren().add(z.creatureImage);
+        //System.out.println(currentPane);
         //z.creatureImage.setVisible(false);
-        z.creatureImage.setFitHeight(160);
-        z.creatureImage.setFitWidth(110);
-		GridPane.setColumnIndex(z.creatureImage,4);
-        GridPane.setRowIndex(z.creatureImage,1);
+        //z.creatureImage.setFitHeight(160);
+        //z.creatureImage.setFitWidth(110);
+		//GridPane.setColumnIndex(z.creatureImage,4);
+        //GridPane.setRowIndex(z.creatureImage,1);
         
-        peaList.get(1).moveRight();
+        //peaList.get(1).moveRight();
 		
         //z.creatureImage.setVisible(true);
         peaGeneratorThread p1 = new GamePageController().new peaGeneratorThread(this, currentPane, z);

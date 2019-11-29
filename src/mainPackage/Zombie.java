@@ -40,11 +40,11 @@ public abstract class Zombie extends Creature implements Cloneable, Serializable
 
 	void moveLeft(){
 		TranslateTransition animation = new TranslateTransition(
-				Duration.seconds(0.7), creatureImage
+				Duration.seconds(25), creatureImage
 		);
-		animation.setCycleCount(Animation.INDEFINITE);
-		animation.setFromX(creatureImage.getTranslateX());
-		animation.setToX(creatureImage.getTranslateX()-50);
+		//animation.setCycleCount(Animation.INDEFINITE);
+		animation.setFromX(creatureImage.getTranslateX()+200);
+		animation.setToX(creatureImage.getTranslateX()-700);
 		animation.setAutoReverse(false);
 		animation.play();
 
@@ -53,7 +53,7 @@ public abstract class Zombie extends Creature implements Cloneable, Serializable
 		TranslateTransition animation = new TranslateTransition(
 				Duration.seconds(0.7), creatureImage
 		);
-		animation.setCycleCount(Animation.INDEFINITE);
+		//animation.setCycleCount(Animation.INDEFINITE);
 		animation.setFromX(creatureImage.getTranslateX());
 		animation.setToX(creatureImage.getTranslateX()+50);
 		animation.setAutoReverse(false);
