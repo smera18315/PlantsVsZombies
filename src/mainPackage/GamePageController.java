@@ -50,7 +50,7 @@ public class GamePageController {
 	Pane mainPane;
 	@FXML
 	Label sunCount;
-	int sunCounter=0;
+	static int sunCounter=0;
 	
 	public void sunGenerator() {
 		//System.out.println(mainPane);
@@ -96,7 +96,7 @@ public class sunGeneratorThread extends AnimationTimer {
         public void handle(long now) {
         
         	counter = counter + 1;
-        	if(counter%1200 == 0)
+        	if(counter%600 == 0)
         	{
         		counter = 0;
         		sunGenerator();
@@ -161,6 +161,15 @@ public class sunGeneratorThread extends AnimationTimer {
      		counter = 0;
      		Sun sun = new Sun(pane);
          	sun.movecurvedPath();
+         	if (sun.creatureImage.isVisible()) {
+    			sun.creatureImage.setOnMouseClicked(e->{
+    				sun.creatureImage.setVisible(false);
+    				sunCounter++;
+    				String s=Integer.toString(sunCounter);
+    				sunCount.setText(s);
+
+    			});
+    		}
             //t1.start();
      	}
      
