@@ -96,7 +96,7 @@ public class sunGeneratorThread extends AnimationTimer {
         public void handle(long now) {
         
         	counter = counter + 1;
-        	if(counter%600 == 0)
+        	if(counter%1200 == 0)
         	{
         		counter = 0;
         		sunGenerator();
