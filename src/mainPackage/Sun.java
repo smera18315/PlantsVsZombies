@@ -47,4 +47,18 @@ public class Sun extends Creature {
         animation.play();
         creatureImage.setOnMouseClicked(event1 -> creatureImage.setVisible(false));
     }
+    
+    void moveAjeeb() {
+    	creatureImage.setVisible(true);
+        TranslateTransition animation = new TranslateTransition(
+                Duration.seconds(1.5), creatureImage
+        );
+        animation.setCycleCount(Animation.INDEFINITE);
+        animation.setFromX(creatureImage.getTranslateX()+50);
+        animation.setToX(creatureImage.getTranslateX()+75);
+        animation.setFromY(creatureImage.getTranslateX()+50);
+        animation.setToY(creatureImage.getTranslateX()+75);
+        animation.setAutoReverse(false);
+        animation.play();
+    }
 }
