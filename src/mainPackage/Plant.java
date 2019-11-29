@@ -169,8 +169,8 @@ class PeaShooter extends Plant
         //z.creatureImage.setVisible(false);
         z.creatureImage.setFitHeight(160);
         z.creatureImage.setFitWidth(110);
-		GridPane.setColumnIndex(z.creatureImage,5);
-        GridPane.setRowIndex(z.creatureImage,5);
+		GridPane.setColumnIndex(z.creatureImage,4);
+        GridPane.setRowIndex(z.creatureImage,1);
         
         peaList.get(1).moveRight();
 		
