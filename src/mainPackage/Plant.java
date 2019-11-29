@@ -4,8 +4,10 @@ import java.sql.Time;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
+import mainPackage.GamePageController.MyTimer;
 
 public abstract class Plant extends Creature implements Serializable, Runnable, Cloneable {
 	/**
@@ -160,10 +162,34 @@ class PeaShooter extends Plant
 
 	@Override
 	public void attack() throws InterruptedException {
-		for (int i=0;i<peaList.size();i++){
-			peaList.get(i).moveRight();
-			//TimeUnit.MILLISECONDS.sleep(10);
-		}
+		Zombie z = new FireZombie(new Pair<Integer, Integer>(700,300));
+		Pane currentPane = ((Pane) peaList.get(1).creatureImage.getParent());
+		currentPane.getChildren().add(z.creatureImage);
+        System.out.println(currentPane);
+        //z.creatureImage.setVisible(false);
+        z.creatureImage.setFitHeight(160);
+        z.creatureImage.setFitWidth(110);
+		GridPane.setColumnIndex(z.creatureImage,5);
+        GridPane.setRowIndex(z.creatureImage,5);
+        
+        peaList.get(1).moveRight();
+		
+        //z.creatureImage.setVisible(true);
+        
+        MyTimer t1 = new GamePageController().new MyTimer(peaList.get(1), z);
+        t1.start();
+
+//		for (int i=0;i<peaList.size();i++){
+//			peaList.get(1).moveRight();
+//			
+//	        //z.creatureImage.setVisible(true);
+//	        
+//	        MyTimer t1 = new GamePageController().new MyTimer(peaList.get(i), z);
+//	        t1.start();
+//	     
+//	        
+//			//TimeUnit.MILLISECONDS.sleep(10);
+//		}
 	}
 
 	@Override

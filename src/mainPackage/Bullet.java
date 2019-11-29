@@ -16,8 +16,8 @@ public class Bullet extends Creature {
         creatureImage=new ImageView(new Image("file:Images/PeaUse.png"));
         creatureImage.setFitHeight(30);
         creatureImage.setFitWidth(30);
-        creatureImage.setLayoutX(plant.plantCoordinates.getKey()+500);
-        creatureImage.setY(plant.plantCoordinates.getValue());
+       // creatureImage.setLayoutX(plant.plantCoordinates.getKey()+500);
+        //creatureImage.setY(plant.plantCoordinates.getValue());
         //System.out.println("hi");
         currentPane.getChildren().add(creatureImage);
         //System.out.println(plant.x);

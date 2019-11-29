@@ -5,10 +5,12 @@ import java.util.ArrayList;
 
 import javafx.animation.*;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Bounds;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,6 +23,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -28,10 +31,74 @@ import javafx.util.Pair;
 
 
 public class GamePageController {
+    public class MyTimer extends AnimationTimer {
+    	
+    	Bullet pea;
+    	Zombie z;
+    	
+    	MyTimer(Bullet pea, Zombie z)
+    	{
+    		this.pea = pea;
+    		this.z = z;
+    	}
+    	
+
+        @Override
+        public void handle(long now) {
+        
+            checkCollisions(pea, z);
+        }
+
+        
+    }
 	
+
+	  public void checkCollisions(Bullet bullet, Zombie zombie) {
+		  
+		    //Rectangle2D bulletRectangle = new Rectangle2D(bullet.creatureImage.getX(), bullet.creatureImage.getY(), bullet.creatureImage.getFitWidth(), bullet.creatureImage.getFitHeight());
+
+		    //Rectangle2D zombieRectangle = new Rectangle2D(zombie.creatureImage.getX(), zombie.creatureImage.getY(), zombie.creatureImage.getFitWidth(), zombie.creatureImage.getFitHeight());
+		    if (bullet.creatureImage.intersects(zombie.creatureImage.getBoundsInLocal())) {
+                
+                System.out.println("Collision");
+                //zombie.creatureImage.setVisible(false);
+            }
+		    
+            //zombie.creatureImage.setVisible(true);
+
+		    
+	  }
+		   // for (Zombie zombie : zombieList) {
+//	            
+//			    
+//
+//	            
+//	        }
+	
+
+//	        List<Missile> ms = spaceship.getMissiles();
+//
+//	        for (Missile m : ms) {
+//
+//	            Rectangle r1 = m.getBounds();
+//
+//	            for (Alien alien : aliens) {
+//
+//	                Rectangle r2 = alien.getBounds();
+//
+//	                if (r1.intersects(r2)) {
+//	                    
+//	                    m.setVisible(false);
+//	                    alien.setVisible(false);
+//	                }
+//	            }
+//	        }
+//	    }
 	LevelGame thisLevel = new LevelGame();
 	ArrayList<ArrayList<Plant>> yardGrid = new ArrayList<ArrayList<Plant>>();
 	ArrayList<Plant> constructorList = new ArrayList<Plant>(5);
+	ArrayList<Zombie> zombieList = new ArrayList<Zombie>();
+
 	{
 		for(int i=0; i<=5;++i)
 		{
@@ -43,6 +110,8 @@ public class GamePageController {
 			ArrayList<Plant> list = new ArrayList<Plant>(constructorList);
 			yardGrid.add(list);
 		}
+		
+
 	}
 	double  orgSceneX ,   orgSceneY, orgTranslateX, orgTranslateY;
 	void zombieSetup()
