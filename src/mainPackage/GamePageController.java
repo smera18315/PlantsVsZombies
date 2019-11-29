@@ -31,6 +31,7 @@ import javafx.util.Pair;
 
 
 public class GamePageController {
+	@FXML Pane mainPane;
     public class MyTimer extends AnimationTimer {
     	
     	Bullet pea;
