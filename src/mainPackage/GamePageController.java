@@ -28,6 +28,7 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.Pair;
+import mainPackage.GamePageController.MyTimer;
 
 
 public class GamePageController {
@@ -54,6 +55,61 @@ public class GamePageController {
 
         
     }
+    
+public class sunGeneratorThread extends AnimationTimer {
+    	
+    	Bullet pea;
+    	Zombie z;
+    	
+    	sunGeneratorThread(Bullet pea, Zombie z)
+    	{
+    		this.pea = pea;
+    		this.z = z;
+    	}
+    	
+
+        @Override
+        public void handle(long now) {
+        
+            checkCollisions(pea, z);
+        }
+
+        
+    }
+
+    
+ public class peaGeneratorThread extends AnimationTimer {
+    	
+    	Plant plant;
+    	Pane pane;
+    	Zombie z;
+    	int counter = 0;
+    	peaGeneratorThread(Plant plant, Pane pane,Zombie z)
+    	{
+    		this.plant = plant;
+    		this.pane = pane;
+    		this.z = z;
+    	}
+    	
+
+        @Override
+        public void handle(long now) {
+        	
+        	counter = counter + 1;
+        	if(counter%60 == 0)
+        	{
+        		counter = 0;
+        		Bullet pea = new Bullet(plant,pane);
+            	pea.moveRight();
+                MyTimer t1 = new GamePageController().new MyTimer(pea, z);
+                t1.start();
+        	}
+        
+
+        }
+
+        
+    }
 	
 
 	  public void checkCollisions(Bullet bullet, Zombie zombie) {
@@ -62,6 +118,8 @@ public class GamePageController {
 
 		    //Rectangle2D zombieRectangle = new Rectangle2D(zombie.creatureImage.getX(), zombie.creatureImage.getY(), zombie.creatureImage.getFitWidth(), zombie.creatureImage.getFitHeight());
 		    if (bullet.creatureImage.getBoundsInParent().intersects(zombie.creatureImage.getBoundsInParent())) {
+		    	
+		    	bullet.creatureImage.setVisible(false);
                 
                System.out.println("Collision");
                 //zombie.creatureImage.setVisible(false);

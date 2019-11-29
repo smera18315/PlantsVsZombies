@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Pair;
 import mainPackage.GamePageController.MyTimer;
+import mainPackage.GamePageController.peaGeneratorThread;
 
 public abstract class Plant extends Creature implements Serializable, Runnable, Cloneable {
 	/**
@@ -163,6 +164,7 @@ class PeaShooter extends Plant
 	@Override
 	public void attack() throws InterruptedException {
 		Zombie z = new FireZombie(new Pair<Integer, Integer>(700,300));
+		
 		Pane currentPane = ((Pane) peaList.get(1).creatureImage.getParent());
 		currentPane.getChildren().add(z.creatureImage);
         System.out.println(currentPane);
@@ -175,9 +177,9 @@ class PeaShooter extends Plant
         peaList.get(1).moveRight();
 		
         //z.creatureImage.setVisible(true);
-        
-        MyTimer t1 = new GamePageController().new MyTimer(peaList.get(1), z);
-        t1.start();
+        peaGeneratorThread p1 = new GamePageController().new peaGeneratorThread(this, currentPane, z);
+        p1.start();
+        //t1.start();
 
 //		for (int i=0;i<peaList.size();i++){
 //			peaList.get(1).moveRight();
