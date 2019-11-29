@@ -32,7 +32,6 @@ import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import javafx.util.Pair;
-import mainPackage.GamePageController.MyTimer;
 
 
 public class GamePageController {
@@ -42,19 +41,7 @@ public class GamePageController {
 		mainPane=(Pane)((Node) e.getSource()).getParent();
 		((Node) e.getSource()).setMouseTransparent(true);
 	}
-//	@Override
-//    public void initialize(URL url, ResourceBundle resourceBundle)
-//    {
-//		try {
-//			mainPane = FXMLLoader.load(getClass().getResource("GamePage.fxml"));
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		System.out.println(mainPane);
-//		sunGeneratorThread s1 = new sunGeneratorThread();
-//		s1.start();
-//    }
+
 	{
 		sunGeneratorThread s1 = new sunGeneratorThread();
 		s1.start();
@@ -80,12 +67,12 @@ public class GamePageController {
 					}
 	}
 	
-public class MyTimer extends AnimationTimer {
+public class collisionCheck extends AnimationTimer {
     	
     	Bullet pea;
     	Zombie z;
     	
-    	MyTimer(Bullet pea, Zombie z)
+    	collisionCheck(Bullet pea, Zombie z)
     	{
     		this.pea = pea;
     		this.z = z;
@@ -143,7 +130,7 @@ public class sunGeneratorThread extends AnimationTimer {
         		counter = 0;
         		Bullet pea = new Bullet(plant,pane);
             	pea.moveRight();
-                MyTimer t1 = new MyTimer(pea, z);
+            	collisionCheck t1 = new collisionCheck(pea, z);
                 t1.start();
         	}
         
@@ -153,6 +140,35 @@ public class sunGeneratorThread extends AnimationTimer {
         
     }
 	
+ public class sunFlowerGeneratorThread extends AnimationTimer {
+ 	
+ 	Plant plant;
+ 	Pane pane;
+ 	int counter = 0;
+ 	sunFlowerGeneratorThread(Plant plant, Pane pane)
+ 	{
+ 		this.plant = plant;
+ 		this.pane = pane;
+ 	}
+ 	
+
+     @Override
+     public void handle(long now) {
+     	
+     	counter = counter + 1;
+     	if(counter%600 == 0)
+     	{
+     		counter = 0;
+     		Sun sun = new Sun(pane);
+         	sun.movecurvedPath();
+            //t1.start();
+     	}
+     
+
+     }
+
+     
+ }
 
 	  public void checkCollisions(Bullet bullet, Zombie zombie) {
 		  

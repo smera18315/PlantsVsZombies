@@ -52,9 +52,9 @@ public class Sun extends Creature {
         TranslateTransition animation = new TranslateTransition(
                 Duration.seconds(1.5), creatureImage
         );
-        animation.setCycleCount(Animation.INDEFINITE);
+       // animation.setCycleCount(Animation.INDEFINITE);
         animation.setFromX(creatureImage.getTranslateX()+50);
-        animation.setToX(creatureImage.getTranslateX()+75);
+        animation.setToX(creatureImage.getTranslateX()+100);
         animation.setFromY(creatureImage.getTranslateX()+50);
         animation.setToY(creatureImage.getTranslateX()+75);
         animation.setAutoReverse(false);
