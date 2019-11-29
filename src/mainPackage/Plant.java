@@ -1,11 +1,15 @@
 package mainPackage;
 import java.io.Serializable;
 import java.sql.Time;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
@@ -65,7 +69,7 @@ class Walnut extends Plant
 	private static final long serialVersionUID = 8853268217182944234L;
 
 	public Walnut(Pair<Integer, Integer> plantCoordinates, int x, int y) {
-		super("Walnut", "Defense Plant", 3, 150, 25, 75, 0, true, false,plantCoordinates,x,y);
+		super("Walnut", "Defense Plant", 3, 1400, 25, 75, 0, true, false,plantCoordinates,x,y);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -90,12 +94,41 @@ class CherryBomb extends Plant
 	 */
 	private static final long serialVersionUID = 7175064322338571913L;
 	private int blastRadius = 1;
+	ImageView blastImg;
 	public CherryBomb(Pair<Integer, Integer> plantCoordinates, int x, int y) {
 		super("CherryBomb", "Exploding Plant", 4, 0, 30, 150, 100, true, false, plantCoordinates,x,y);
 	}
+	
+    static int getTime(){
+        LocalDateTime now= LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        String n=dtf.format(now);
+        String loopTime=String.valueOf(n.charAt(14))+String.valueOf(n.charAt(15))+String.valueOf(n.charAt(17))+String.valueOf(n.charAt(18));
+        int yayy=Integer.parseInt(loopTime);
+        return yayy;
+    }
 
 	@Override
 	public void attack() {
+		System.out.println("yass");
+
+		creatureImage.setImage(new Image("file:Images/BlastCherry.png"));
+		creatureImage.setVisible(true);
+		LocalDateTime now= LocalDateTime.now();
+		String s=now.toString();
+        int init=getTime();
+        int fin;
+		System.out.println("yass");
+        while (true){
+            fin=getTime();
+            if (fin-init>1){
+                break;
+            }
+        }
+		super.creatureImage.setVisible(true);
+		LocalDateTime then;
+		System.out.println("yass");
+		
 		int x = plantCoordinates.getKey();
 		int y = plantCoordinates.getValue();
 		for(int i = x-blastRadius; i <= x+blastRadius; ++i)

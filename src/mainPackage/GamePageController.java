@@ -35,16 +35,27 @@ import javafx.util.Pair;
 
 
 public class GamePageController {
+	void zombieGenerator()
+	{
+		
+	}
 	@FXML
 	void setPane(MouseEvent e)
 	{
-		mainPane=(Pane)((Node) e.getSource()).getParent();
-		((Node) e.getSource()).setMouseTransparent(true);
+		if(mainPane==null)
+		{
+			mainPane=(Pane)((Node) e.getSource()).getParent();
+			((Node) e.getSource()).setMouseTransparent(true);
+		}
 	}
 
 	{
 		sunGeneratorThread s1 = new sunGeneratorThread();
 		s1.start();
+	}
+	void setText(String s)
+	{
+		sunCount.setText(s);
 	}
 	@FXML
 	Pane mainPane;
@@ -53,7 +64,7 @@ public class GamePageController {
 	static int sunCounter=0;
 	
 	public void sunGenerator() {
-		//System.out.println(mainPane);
+		System.out.println("sg"+mainPane);
 		Sun sun=new Sun(mainPane);
 		sun.moveDown();
 		if (sun.creatureImage.isVisible()) {
@@ -159,14 +170,14 @@ public class sunGeneratorThread extends AnimationTimer {
      	if(counter%300 == 0)
      	{
      		counter = 0;
-     		Sun sun = new Sun(pane);
+     		Sun sun = new Sun(plant,pane);
          	sun.movecurvedPath();
          	if (sun.creatureImage.isVisible()) {
     			sun.creatureImage.setOnMouseClicked(e->{
     				sun.creatureImage.setVisible(false);
     				sunCounter++;
     				String s=Integer.toString(sunCounter);
-    				sunCount.setText(s);
+    				//sunCount.setText(s);
 
     			});
     		}
@@ -402,13 +413,17 @@ public class sunGeneratorThread extends AnimationTimer {
 		        yardGrid.get(x).set(y, newPlant);
 		        System.out.println(yardGrid);
 
-		        //System.out.println("hi");
+		        System.out.println("hi");
 
 		        thisLevel.addPlants(newPlant);
-		        //System.out.println("hi5");
+		        System.out.println("hi5");
 
 		        cell.setUserData(newPlant);
+				System.out.println("yass");
+
 		        newPlant.attack();
+				System.out.println("yass");
+
 
 		        //System.out.println("hi");
 
