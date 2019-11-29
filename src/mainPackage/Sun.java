@@ -13,6 +13,20 @@ public class Sun extends Creature {
 
 
     Random r=new Random();
+    
+    Sun(Plant plant, Pane currentPane) {
+        super(plant.plantCoordinates.getKey(), plant.plantCoordinates.getValue(), "Sun"); // Random Values as of now, we'll have to check what the top of the pain is      
+        creatureImage=new ImageView(new Image("file:Images/Sun.png"));
+        creatureImage.setFitHeight(70);
+        creatureImage.setFitWidth(70);
+        System.out.println(currentPane);
+        if(currentPane!=null)
+        {
+        	currentPane.getChildren().add(creatureImage);
+        }        ((GridPane) currentPane).setColumnIndex(creatureImage,plant.y);
+        ((GridPane) currentPane).setRowIndex(creatureImage,plant.x);
+        creatureImage.setVisible(false);
+    }
 
     Sun(Pane currentPane) {
         super(100, 1000, "Sun"); // Random Values as of now, we'll have to check what the top of the pain is
@@ -25,7 +39,10 @@ public class Sun extends Creature {
         creatureImage.setFitHeight(70);
         creatureImage.setFitWidth(70);
         System.out.println(currentPane);
-        currentPane.getChildren().add(creatureImage);
+        if(currentPane!=null)
+        {
+        	currentPane.getChildren().add(creatureImage);
+        }
         creatureImage.setX(xCoo);
 
         //System.out.println(creatureImage.getParent());

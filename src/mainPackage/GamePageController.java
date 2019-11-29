@@ -400,11 +400,11 @@ public class sunGeneratorThread extends AnimationTimer {
     			cell.setImage(new Image(db.getString()));
 		        flag = true;
 		        System.out.println(cell.getLayoutX());
-		        //System.out.println("hi");
+		        System.out.println("hi");
 
 		        Pair<Integer, Integer> plantCoordinate = new Pair<Integer, Integer>((int)cell.getLayoutX(), (int)cell.getLayoutY());
-		        //System.out.println("hi22");
-
+		        System.out.println("hi22");
+		        System.out.println(cell.getParent());
 		        Plant newPlant = parseURL(db.getString(), plantCoordinate, (Pane)(cell.getParent()),x,y);	//parseURL is a function that takes in the url, strips and gets the name from it and returns a plant type variable
 		        newPlant.x = x;
 		        newPlant.y = y;
