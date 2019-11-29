@@ -60,7 +60,7 @@ public class GamePageController {
 		    //Rectangle2D zombieRectangle = new Rectangle2D(zombie.creatureImage.getX(), zombie.creatureImage.getY(), zombie.creatureImage.getFitWidth(), zombie.creatureImage.getFitHeight());
 		    if (bullet.creatureImage.intersects(zombie.creatureImage.getBoundsInLocal())) {
                 
-                System.out.println("Collision");
+               // System.out.println("Collision");
                 //zombie.creatureImage.setVisible(false);
             }
 		    
@@ -122,32 +122,34 @@ public class GamePageController {
 	}
 	@FXML
     public void lawnMower(MouseEvent e){
-		ImageView newImage = new ImageView(new Image("file:Images/Zombies/waterZombie.png"));
         ImageView lawnMower = (ImageView) e.getSource();
+
+		ArrayList<Sun> sunArr=new ArrayList<Sun>(5);
+		for (int i=0;i<5;i++) {
+			sunArr.add(new Sun((Pane) lawnMower.getParent()));
+		}
+		for (int i=0;i<5;i++) {
+		       //((Pane) lawnMower.getParent()).getChildren().add(sunArr.get(i).creatureImage);
+			System.out.println("sun");
+			sunArr.get(i).moveDown();
+			System.out.println("sun2");
+
+		}
+		ImageView newImage = new ImageView(new Image("file:Images/Zombies/waterZombie.png"));
         System.out.println(lawnMower.getParent());
 		Zombie z = new FireZombie(new Pair<Integer, Integer>((int)(lawnMower.getX()),(int)(lawnMower.getY())));
 
-       ((Pane) lawnMower.getParent()).getChildren().add(z.creatureImage);
+       //((Pane) lawnMower.getParent()).getChildren().add(z.creatureImage);
        //z.setVisible(true);
         //Pane pain = new Pane(lawnMower.getParent());
         //System.out.println(pain);
         //pain.getChildren().add(newImage);
-        newImage.setX(lawnMower.getX());
-		newImage.setY(lawnMower.getY());
-		newImage.setVisible(true);
+       // newImage.setX(lawnMower.getX());
+		//newImage.setY(lawnMower.getY());
+		//newImage.setVisible(true);
 		//Zombie z = new FireZombie(new Pair<Integer, Integer>((int)(lawnMower.getX()),(int)(lawnMower.getY())));
 		//z.getZombieImage().();
-		z.moveRight();
-		z.moveRight();
-		z.moveRight();
-		z.moveRight();
-		z.moveRight();
-		z.moveRight();
-		z.moveRight();
-		z.moveRight();
-		z.moveRight();
-		z.moveRight();
-		z.moveRight();
+		
         TranslateTransition translate = new TranslateTransition();  
         translate.setNode(lawnMower);  
         translate.setByX(1500);  

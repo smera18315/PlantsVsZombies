@@ -14,30 +14,35 @@ public class Sun extends Creature {
 
 
     Sun(Pane currentPane) {
-        super(100, 100, "Sun"); // Random Values as of now, we'll have to check what the top of the pain is
+        super(100, 1000, "Sun"); // Random Values as of now, we'll have to check what the top of the pain is
         Random r=new Random();
-        int xCoo=r.nextInt(1200);
-        creatureImage.setTranslateX(xCoo);
-        creatureImage=new ImageView(new Image("file:Images/PeaUse.png"));
-        creatureImage.setFitHeight(30);
-        creatureImage.setFitWidth(30);
-        currentPane.getChildren().add(creatureImage);
+        int xCoo=100+r.nextInt(120);
+       
+        creatureImage=new ImageView(new Image("file:Images/Sun.png"));
+        System.out.println("X coordinate: "+creatureImage.getX());
+        System.out.println("Y coordinate: "+creatureImage.getY());
 
+        creatureImage.setFitHeight(50);
+        creatureImage.setFitWidth(50);
+        currentPane.getChildren().add(creatureImage);
+        creatureImage.setX(xCoo);
 //        ((GridPane) currentPane).setColumnIndex(creatureImage,plant.y);
 //        ((GridPane) currentPane).setRowIndex(creatureImage,plant.x);
 //
-//        //System.out.println(creatureImage.getParent());
+        System.out.println(creatureImage.getParent());
 
         creatureImage.setVisible(false);
     }
     void moveDown(){
         creatureImage.setVisible(true);
         TranslateTransition animation = new TranslateTransition(
-                Duration.seconds(2.5), creatureImage
+                Duration.seconds(1.5), creatureImage
         );
-        animation.setCycleCount(Animation.INDEFINITE);
-        animation.setFromY(creatureImage.getTranslateY()+50);
-        animation.setToY(creatureImage.getTranslateY()+750);
+        //animation.setCycleCount(Animation.INDEFINITE);
+        animation.setFromY(creatureImage.getTranslateY()-150);
+        System.out.println("init " + (creatureImage.getTranslateY()-150));
+        animation.setToY(creatureImage.getTranslateY()+350);
+        System.out.println("final "+ (creatureImage.getTranslateY()+350));
         animation.setAutoReverse(false);
         animation.play();
     }
