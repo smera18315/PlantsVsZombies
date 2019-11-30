@@ -122,6 +122,28 @@ class CherryBomb extends Plant
         int yayy=Integer.parseInt(loopTime);
         return yayy;
     }
+    
+    public void blast(Pane pane) {
+		System.out.println("yass");
+
+		creatureImage.setImage(new Image("file:Images/BlastCherry.png"));
+		creatureImage.setVisible(true);
+		pane.getChildren().add(creatureImage);
+        int init=getTime();
+        int fin;
+		System.out.println("yass");
+        while (true){
+            fin=getTime();
+            if (fin-init>1){
+                break;
+            }
+        }
+		super.creatureImage.setVisible(true);
+		System.out.println("yass");
+		
+		int x = plantCoordinates.getKey();
+		int y = plantCoordinates.getValue();
+    }
 
 	@Override
 	public void attack() {

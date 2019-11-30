@@ -485,6 +485,10 @@ public class sunGeneratorThread extends AnimationTimer {
 			        System.out.println("hi5");
 
 		        }
+		        else if(newPlant.getPlantName().equals("CherryBomb")) {
+		        	CherryBomb plant=(CherryBomb) newPlant;
+		        	plant.blast(mainPane);
+		        }
 		        else
 		        {
 			        newPlant.attack();
