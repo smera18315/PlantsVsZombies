@@ -524,11 +524,11 @@ public class sunGeneratorThread extends AnimationTimer {
     			cell.setImage(new Image(db.getString()));
 		        flag = true;
 		        System.out.println(cell.getLayoutX());
-		        //System.out.println("hi");
+		        System.out.println("hi");
 
 		        Pair<Integer, Integer> plantCoordinate = new Pair<Integer, Integer>((int)cell.getLayoutX(), (int)cell.getLayoutY());
-		        //System.out.println("hi22");
-
+		        System.out.println("hi22");
+		        System.out.println(cell.getParent());
 		        Plant newPlant = parseURL(db.getString(), plantCoordinate, (Pane)(cell.getParent()),x,y);	//parseURL is a function that takes in the url, strips and gets the name from it and returns a plant type variable
 		        newPlant.x = x;
 		        newPlant.y = y;
@@ -560,6 +560,10 @@ public class sunGeneratorThread extends AnimationTimer {
 		        	}
 			        System.out.println("hi5");
 
+		        }
+		        else if(newPlant.getPlantName().equals("CherryBomb")) {
+		        	CherryBomb plant=(CherryBomb) newPlant;
+		        	plant.blast(mainPane);
 		        }
 		        else
 		        {
@@ -609,6 +613,19 @@ public class sunGeneratorThread extends AnimationTimer {
 		 rotateClock.play();  
 
 	 }
+	 
+	    @FXML
+	    public void mouseZombieHead(MouseEvent e){
+	        ImageView m = (ImageView) e.getSource();
+	        TranslateTransition animation = new TranslateTransition(
+	                Duration.seconds(60), m
+	        );
+	        //animation.setCycleCount(Animation.INDEFINITE);
+	        animation.setFromX(m.getTranslateX());
+	        animation.setToX(m.getTranslateX()-400);
+	        animation.setAutoReverse(false);
+	        animation.play();
+	    }
 	 
 	 
 	
