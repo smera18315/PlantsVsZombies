@@ -538,6 +538,19 @@ public class sunGeneratorThread extends AnimationTimer {
 
 	 }
 	 
+	    @FXML
+	    public void mouseZombieHead(MouseEvent e){
+	        ImageView m = (ImageView) e.getSource();
+	        TranslateTransition animation = new TranslateTransition(
+	                Duration.seconds(60), m
+	        );
+	        //animation.setCycleCount(Animation.INDEFINITE);
+	        animation.setFromX(m.getTranslateX());
+	        animation.setToX(m.getTranslateX()-400);
+	        animation.setAutoReverse(false);
+	        animation.play();
+	    }
+	 
 	 
 	
 
