@@ -1,10 +1,7 @@
 package mainPackage;
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.stream.Collectors;
-
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.scene.Node;
@@ -15,27 +12,43 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+class Character extends ImageView {
+    boolean isAlive=true;
+    String type;
+    
+    Character(int x, int y, String type){
+        super();
+        isAlive=true;
+        setTranslateX(x);
+        setTranslateY(y);
+        this.type=type;
+    }
+}
+
 public class MiniGameController extends Application {
 	Pane mainPane=new Pane();
 	double time=0;
-	MainPlant hero=new MainPlant(300,300);
+	MainPlant hero=new MainPlant(800,100);
 	
 	void makeZombies() {
         for (int i = 0; i < 5; i++) {
-            ZombiePlant z = new ZombiePlant(1000,i*100);
-            mainPane.getChildren().add(z.creatureImage);
+            ZombiePlant z = new ZombiePlant(400,i*100);
+            mainPane.getChildren().add(z);
+            mainPane.getChildren().get(i).setVisible(true);
         }
 	}
 	
-    private void attack(Creature cr) {
+    private void attack(Character cr) {
     	if (cr.type.equals("zombiePlant")) {
     		ZombiePlant zp=(ZombiePlant)cr;
     		ZombiePlantBullet zpm=new ZombiePlantBullet(zp);
+    		zpm.setVisible(true);
     		mainPane.getChildren().add(zpm);
-    	}
+    		}
     	else if (cr.type.equals("mainPlant")) {
     		MainPlant zp=(MainPlant)cr;
     		MainPlantBullet zpm=new MainPlantBullet(zp);
+    		zpm.setVisible(true);
     		mainPane.getChildren().add(zpm);
     	}
     }
@@ -43,10 +56,17 @@ public class MiniGameController extends Application {
     void update() {
     	Random r=new Random();
         time += 0.020;
-        ArrayList<Creature> crList=new ArrayList<Creature>(mainPane.getChildren().size());
+        ArrayList<Character> crList=new ArrayList<Character>(mainPane.getChildren().size());
+        for (int i=0;i<crList.size();i++) {
+        	if (crList.get(i)!=null) {
+        		if (crList.get(i).isAlive) {
+        			crList.get(i).setVisible(true);
+        		}
+        	}
+        }
         for (Node currentNode : mainPane.getChildren()){
-            if (currentNode instanceof Creature){
-                crList.add((Creature)currentNode);
+            if (currentNode instanceof Character){
+                crList.add((Character)currentNode);
             }
         }        
         crList.forEach(s -> {
@@ -67,9 +87,11 @@ public class MiniGameController extends Application {
                     for (int i=0;i<crList.size();i++) {
                     	if (crList.get(i).type.equals("zombiePlant")) {
                     		ZombiePlant zp=(ZombiePlant)crList.get(i);
-                    		if (mpb.creatureImage.getBoundsInParent().intersects(zp.creatureImage.getBoundsInParent())) {
+                    		if (mpb.getBoundsInParent().intersects(zp.getBoundsInParent())) {
                     			zp.isAlive=false;
+                    			zp.setVisible(false);
                     			s.isAlive=false;
+                    			s.setVisible(false);
                     		}
                     	}
                     }
@@ -78,9 +100,11 @@ public class MiniGameController extends Application {
                 case "zombiePlantBullet":
                 	ZombiePlantBullet zpb=(ZombiePlantBullet)s;
                     zpb.moveLeft();
-                    if (zpb.creatureImage.getBoundsInParent().intersects(hero.creatureImage.getBoundsInParent())) {
+                    if (zpb.getBoundsInParent().intersects(hero.getBoundsInParent())) {
                         hero.isAlive = false;
+                        hero.setVisible(false);
                         s.isAlive = false;
+                        s.setVisible(false);
                     }
                     break;
             }
@@ -89,6 +113,8 @@ public class MiniGameController extends Application {
     
 	Parent makeGame(){
 		mainPane.getChildren().add(hero);
+		mainPane.getChildren().get(0).setVisible(true);
+        mainPane.setPrefSize(1000, 1000);
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
@@ -127,56 +153,71 @@ public class MiniGameController extends Application {
 				
 }
 	
-class MainPlant extends Creature{
+class MainPlant extends Character{
 
 	MainPlant(int x, int y) {
 		super(x, y, "mainPlant");
-		super.creatureImage=new ImageView(new Image("file:Images/HeroPlant.png"));
+		setImage(new Image("file:Images/HeroPlant.png"));
+        setFitHeight(150);
+        setFitWidth(190);
+		setVisible(true);
 		// TODO Auto-generated constructor stub
 	}
 	
     void moveUp() {
-        creatureImage.setTranslateY(creatureImage.getTranslateY() - 5);
+        setTranslateY(getTranslateY() - 5);
     }
 
     void moveDown() {
-        creatureImage.setTranslateY(creatureImage.getTranslateY() + 5);
+        setTranslateY(getTranslateY() + 5);
     }
 	
 	
 }
 
-class MainPlantBullet extends Creature{
+class MainPlantBullet extends Character{
 
 	MainPlantBullet(MainPlant p) {
-		super((int)p.creatureImage.getTranslateX(), (int)p.creatureImage.getTranslateY(), "mainPlantBullet");
-		super.creatureImage=new ImageView(new Image("file:Images/HeroPlant.png"));
+		super((int)p.getTranslateX(), (int)p.getTranslateY(), "mainPlantBullet");
+		setImage(new Image("file:Images/PeaUse.png"));
+		setFitHeight(10);
+		setFitWidth(10);
+		setVisible(true);
+		moveRight();
+		
 		// TODO Auto-generated constructor stub
 	}
 
     void moveRight() {
-        creatureImage.setTranslateY(creatureImage.getTranslateX() + 5);
+        setTranslateX(getTranslateX() + 5);
     }
 }
 
-class ZombiePlantBullet extends Creature{
+class ZombiePlantBullet extends Character{
 
 	ZombiePlantBullet(ZombiePlant p) {
-		super((int)p.creatureImage.getTranslateX(), (int)p.creatureImage.getTranslateY(), "zombiePlantBullet");
-		super.creatureImage=new ImageView(new Image("file:Images/HeroPlant.png"));
+		super((int)p.getTranslateX(), (int)p.getTranslateY(), "zombiePlantBullet");
+		setImage(new Image("file:Images/PeaUse.png"));
+		setFitHeight(10);
+		setFitWidth(10);
+		setVisible(true);
+		moveLeft();
 		// TODO Auto-generated constructor stub
 	}
 
     void moveLeft() {
-        creatureImage.setTranslateY(creatureImage.getTranslateX() - 5);
+        setTranslateX(getTranslateX() - 5);
     }
 }
 
-class ZombiePlant extends Creature{
+class ZombiePlant extends Character{
 
 	ZombiePlant(int x, int y) {
 		super(x, y, "zombiePlant");
-		super.creatureImage=new ImageView(new Image("file:Images/zPlant.png"));
+		setImage(new Image("file:Images/zPlant.png"));
+        setFitHeight(150);
+        setFitWidth(190);
+		setVisible(true);
 		// TODO Auto-generated constructor stub
 	}	
 }
