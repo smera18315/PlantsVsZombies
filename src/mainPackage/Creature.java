@@ -7,17 +7,25 @@ import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-public class Creature {
+public class Creature extends ImageView {
     boolean isAlive=true;
-    private String type;
+    String type;
     public ImageView creatureImage;
 
     Creature(int x, int y, String type){
         super();
+        isAlive=true;
         creatureImage=new ImageView();
         creatureImage.setTranslateX(x);
         creatureImage.setTranslateY(y);
         this.type=type;
+    }
+    
+    Creature(){
+        super();
+        isAlive=true;
+        creatureImage=new ImageView();
+        this.type=null;
     }
 
 }

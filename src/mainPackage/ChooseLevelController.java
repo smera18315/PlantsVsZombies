@@ -2,6 +2,7 @@ package mainPackage;
 
 import java.io.IOException;
 
+import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class ChooseLevelController {
     @FXML
@@ -132,4 +134,5 @@ public class ChooseLevelController {
 		stage.setScene(new Scene(root));
 
     }
+   
 }
