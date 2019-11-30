@@ -32,9 +32,9 @@ public abstract class Zombie extends Creature implements Cloneable, Serializable
         super(zombieCoordinates.getKey(),zombieCoordinates.getValue(),"Zombie");
         this.zombieName = zombieName;
         this.zombieID = zombieID;
-        this.zombieHealth = zombieHealth;
+        this.setZombieHealth(zombieHealth);
         this.zombieWaitingTime = zombieWaitingTime;
-        this.isZombieAlive = isZombieAlive;
+        this.setZombieAlive(isZombieAlive);
         this.zombieCoordinates = zombieCoordinates;
     }
 
@@ -75,6 +75,22 @@ public abstract class Zombie extends Creature implements Cloneable, Serializable
 		}
 
 	}
+
+	public int getZombieHealth() {
+		return zombieHealth;
+	}
+
+	public void setZombieHealth(int zombieHealth) {
+		this.zombieHealth = zombieHealth;
+	}
+
+	public boolean isZombieAlive() {
+		return isZombieAlive;
+	}
+
+	public void setZombieAlive(boolean isZombieAlive) {
+		this.isZombieAlive = isZombieAlive;
+	}
 }
 
 class FireZombie extends Zombie{
@@ -82,7 +98,7 @@ class FireZombie extends Zombie{
 
 
     public FireZombie(Pair<Integer, Integer> zombieCoordinates) {
-        super("FireZombie", 1, 50, 1000, true, zombieCoordinates);
+        super("FireZombie", 1, 500, 1000, true, zombieCoordinates);
         creatureImage=new ImageView(new Image("file:Images/Zombies/fireZombie.png"));
         creatureImage.setVisible(true);
 

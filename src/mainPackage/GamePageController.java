@@ -39,19 +39,25 @@ public class GamePageController {
 	
 public class addRandZombie extends AnimationTimer {
 	Random r = new Random();
+	int counter = 0;
 
         @Override
         public void handle(long now) {
+        	counter = counter+1;
         
         	Zombie zombie = new FireZombie(new Pair<Integer, Integer>(300,300));
         	if(gridPane!=null)
         	{
         		int row = 1 + r.nextInt(5);
-        		if(yardGrid.get(9).get(row)==null)
+        		if(counter%300==0)
         		{
-            		gridPane.getChildren().add(zombie.creatureImage);
+            		counter = 0;
+        			gridPane.getChildren().add(zombie.creatureImage);
+        			if(yardGrid.get(9).get(row)==null)
+        			{
+            			yardGrid.get(9).set(row, zombie);
 
-        			yardGrid.get(9).set(row, zombie);
+        			}
         			zombie.creatureImage.setFitHeight(160);
                     zombie.creatureImage.setFitWidth(110);
             		
@@ -73,7 +79,7 @@ public class addRandZombie extends AnimationTimer {
 		Zombie zombie = new FireZombie(new Pair<Integer, Integer>(300,300));
 		//zombie=randomZombieGenerator();
 		zombie.moveLeft();
-		System.out.println("zombie");
+		//System.out.println("zombie");
 //		if (sun.creatureImage.isVisible()) {
 //			sun.creatureImage.setOnMouseClicked(e->{
 //				sun.creatureImage.setVisible(false);
@@ -137,22 +143,45 @@ public class addRandZombie extends AnimationTimer {
 	
 public class collisionCheck extends AnimationTimer {
     	
-    	Bullet pea;
-    	Zombie z;
+    	Bullet bullet;
+    	Zombie zombie;
     	
     	collisionCheck(Bullet pea, Zombie z)
     	{
-    		this.pea = pea;
-    		this.z = z;
+    		this.bullet = pea;
+    		this.zombie = z;
     	}
     	
 
         @Override
         public void handle(long now) {
         
-            checkCollisions(pea, z);
-        }
+        		if (bullet.creatureImage.getBoundsInParent().intersects(zombie.creatureImage.getBoundsInParent())) {
+		    	
+		    	bullet.creatureImage.setVisible(false);
+		    	System.out.println("init"+zombie.getZombieHealth());
 
+		    	zombie.setZombieHealth(zombie.getZombieHealth()-30);
+		    	System.out.println(zombie.getZombieHealth());
+		    	if(zombie.getZombieHealth()<=0)
+		    	{
+			    	System.out.println("wtf"+zombie.getZombieHealth());
+
+		    		zombie.setZombieAlive(false);
+		    		zombie.creatureImage.setVisible(false);	
+		    		
+		    		if(((Pane) zombie.creatureImage.getParent())!=null)
+		    		{
+			    		((Pane) zombie.creatureImage.getParent()).getChildren().remove(zombie.creatureImage);
+
+		    		}
+			    	System.out.println("udhvarg");
+//			  		gridPane.getChildren().remove(zombie.creatureImage);
+			  		stop();
+			  		return;
+		    	}
+        	}
+        }
         
     }
     
@@ -201,6 +230,10 @@ public class sunGeneratorThread extends AnimationTimer {
             	pea.moveRight();
             	collisionCheck t1 = new collisionCheck(pea, z);
                 t1.start();
+                if(z.isZombieAlive()==false)
+                {
+                	stop();
+                }
         	}
         
 
@@ -251,11 +284,44 @@ public class sunGeneratorThread extends AnimationTimer {
 	  public void checkCollisions(Bullet bullet, Zombie zombie) {
 		  
 		    //Rectangle2D bulletRectangle = new Rectangle2D(bullet.creatureImage.getX(), bullet.creatureImage.getY(), bullet.creatureImage.getFitWidth(), bullet.creatureImage.getFitHeight());
-
-		    //Rectangle2D zombieRectangle = new Rectangle2D(zombie.creatureImage.getX(), zombie.creatureImage.getY(), zombie.creatureImage.getFitWidth(), zombie.creatureImage.getFitHeight());
+		  	//System.out.println("parent:"+zombie.creatureImage.getParent());
+;		    //Rectangle2D zombieRectangle = new Rectangle2D(zombie.creatureImage.getX(), zombie.creatureImage.getY(), zombie.creatureImage.getFitWidth(), zombie.creatureImage.getFitHeight());
 		    if (bullet.creatureImage.getBoundsInParent().intersects(zombie.creatureImage.getBoundsInParent())) {
 		    	
 		    	bullet.creatureImage.setVisible(false);
+		    	System.out.println("init"+zombie.getZombieHealth());
+
+		    	zombie.setZombieHealth(zombie.getZombieHealth()-100);
+		    	System.out.println(zombie.getZombieHealth());
+		    	if(zombie.getZombieHealth()<=0)
+		    	{
+			    	System.out.println("wtf"+zombie.getZombieHealth());
+
+		    		zombie.setZombieAlive(false);
+		    		zombie.creatureImage.setVisible(false);	
+		    		Pane pane = (GridPane) zombie.creatureImage.getParent();
+			    	System.out.println(pane);
+			  		pane.getChildren().remove(zombie.creatureImage);
+		    	}
+		    	
+//		    	
+//		    	if(zombie.isZombieAlive()==false)
+//		    	{
+//		    		zombie.creatureImage.setVisible(false);	
+//		    	}
+		    	
+		    	
+//		    	if(zombie.creatureImage.getParent()!=null)
+//		    	{
+//				  	final Pane pane = 
+//				  	System.out.println(pane);
+//				  	
+//		    	}
+
+//		    	if(pane!=null)
+//			  	{
+//			  		gridPane.getChildren().remove(zombie.creatureImage);
+//			  	}
                 
                //System.out.println("Collision");
                 //zombie.creatureImage.setVisible(false);
@@ -480,8 +546,18 @@ public class sunGeneratorThread extends AnimationTimer {
 		        {
 			        
 		        	System.out.println("hi6"+yardGrid.get(9));
+		        	if((Zombie)(yardGrid.get(9).get(x))!=null)
+		        		
+		        	{
+			        	newPlant.attack((Zombie)(yardGrid.get(9).get(x)));
 
-		        	newPlant.attack((Zombie)(yardGrid.get(9).get(x)));
+		        	}
+
+		        	Zombie z = (Zombie)(yardGrid.get(9).get(x));
+		        	if(z.isZombieAlive()==false)
+		        	{
+		        		yardGrid.get(9).set(x,null);
+		        	}
 			        System.out.println("hi5");
 
 		        }

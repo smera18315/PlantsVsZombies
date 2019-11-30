@@ -125,16 +125,15 @@ class CherryBomb extends Plant
 
 	@Override
 	public void attack() {
-		System.out.println("yass");
+		System.out.println("yassattack");
 
 		creatureImage.setImage(new Image("file:Images/BlastCherry.png"));
 		creatureImage.setVisible(true);
-		LocalDateTime now= LocalDateTime.now();
-		String s=now.toString();
         int init=getTime();
         int fin;
 		System.out.println("yass");
         while (true){
+        	System.out.println("hi");
             fin=getTime();
             if (fin-init>1){
                 break;
@@ -150,7 +149,8 @@ class CherryBomb extends Plant
 		{
 			for(int j = y-blastRadius; j <= y+blastRadius; ++j)
 			{
-//				if(hasZombie(i,j))
+//				
+				//if(hasZombie(i,j))
 //				{
 //					zombie.setHealth = zombie.getHealth() - plantAttack;
 //				}
