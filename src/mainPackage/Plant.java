@@ -124,9 +124,11 @@ class CherryBomb extends Plant
     }
     
     public void blast(Pane pane) {
-		System.out.println("yass");
+		//System.out.println("yass");
 
 		creatureImage.setImage(new Image("file:Images/BlastCherry.png"));
+		creatureImage.setFitHeight(200);
+		creatureImage.setFitWidth(2000);
 		creatureImage.setVisible(true);
 		pane.getChildren().add(creatureImage);
         int init=getTime();
@@ -138,8 +140,8 @@ class CherryBomb extends Plant
                 break;
             }
         }
-		super.creatureImage.setVisible(true);
-		System.out.println("yass");
+		creatureImage.setVisible(true);
+		System.out.println("false");
 		
 		int x = plantCoordinates.getKey();
 		int y = plantCoordinates.getValue();
@@ -259,35 +261,11 @@ class PeaShooter extends Plant
 	}
 
 	public void attack(Zombie z) throws InterruptedException {
-		//Zombie z = new FireZombie(new Pair<Integer, Integer>(700,300));
 		
 		Pane currentPane = ((Pane) peaList.get(1).creatureImage.getParent());
-		//currentPane.getChildren().add(z.creatureImage);
-        //System.out.println(currentPane);
-        //z.creatureImage.setVisible(false);
-        //z.creatureImage.setFitHeight(160);
-        //z.creatureImage.setFitWidth(110);
-		//GridPane.setColumnIndex(z.creatureImage,4);
-        //GridPane.setRowIndex(z.creatureImage,1);
-        
-        //peaList.get(1).moveRight();
-		
-        //z.creatureImage.setVisible(true);
         peaGeneratorThread p1 = new GamePageController().new peaGeneratorThread(this, currentPane, z);
         p1.start();
-        //t1.start();
 
-//		for (int i=0;i<peaList.size();i++){
-//			peaList.get(1).moveRight();
-//			
-//	        //z.creatureImage.setVisible(true);
-//	        
-//	        MyTimer t1 = new GamePageController().new MyTimer(peaList.get(i), z);
-//	        t1.start();
-//	     
-//	        
-//			//TimeUnit.MILLISECONDS.sleep(10);
-//		}
 	}
 
 	@Override

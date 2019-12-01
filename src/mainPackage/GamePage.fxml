@@ -216,7 +216,7 @@
             <Image url="@../../Images/statusBar.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="126.0" fitWidth="85.0" layoutX="865.0" layoutY="672.0" onMouseClicked="#mouseZombieHead" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="126.0" fitWidth="85.0" layoutX="865.0" layoutY="672.0" onMouseEntered="#mouseZombieHead" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/zombieFace.png" />
          </image>

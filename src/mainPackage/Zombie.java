@@ -4,6 +4,7 @@ import javafx.animation.Animation;
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 import javafx.util.Pair;
 
@@ -15,6 +16,8 @@ public abstract class Zombie extends Creature implements Cloneable, Serializable
 	private int zombieID, zombieHealth, zombieWaitingTime;
 	private boolean isZombieAlive;
 	static int zombieCounter = 0;
+	int row;
+	static GridPane gp;
 	Pair<Integer, Integer> zombieCoordinates;
 //	ImageView zombieImage;
 //
